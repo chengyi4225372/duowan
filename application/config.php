@@ -257,17 +257,7 @@ return [
 
 
 
-    /**
-     * 应用加密字符串
-     * 生成api token和加密cookie的时候使用
-     * 可以用php think createkey命令生成
-     */
-    'app_key'  => '6757a9f87f0b5d65de33f8b55ac5d381',
 
-    'helper_config' => [
-        //高德地图web服务key，请替换成自己的
-        'amap_web_key' => 'cb241360e2b73b5951371c60a1b095ef',
-    ],
 
     'sys_log' => [
         'env'  => 'dev',//开发环境
@@ -288,11 +278,6 @@ return [
     // 设置空模块名为admin
     'empty_module'      => 'admin',
 
-    //极验id和key
-    'geetest'           => [
-        'id'  => '填写你的id',
-        'key' => '填写你的key'
-    ],
 
     'http_exception_template' => [
         // 定义404错误的重定向页面地址
@@ -300,68 +285,9 @@ return [
         // 还可以定义其它的HTTP status
     ],
 
-    'reward_url' => [
-        'wechat' => 'wxp://f2f0nlKFenUs_W0F4TfvABAjAigvkbphDKjV',
-        'alipay' => 'HTTPS://QR.ALIPAY.COM/FKX02237XBDM3VGBVXTNC9',
-        'jd'     => 'https://h5pay.jd.com/c2cIndex?t=70b4c1a48b1a923eb1ecc283ba122f8567c7cda70c18f6bd38fc02a0064b8b03e0b33641d759bf770a4ef43a3344ef1e',
-        'qq'     => 'https://i.qianbao.qq.com/wallet/sqrcode.htm?m=tenpay&a=1&u=8553151',
-        'unkown' => '/',
-    ],
 
-    //短信配置
-    'easysms'    => [
-        // HTTP 请求的超时时间（秒）
-        'timeout'  => 5.0,
 
-        // 默认发送配置
-        'default'  => [
-            // 网关调用策略，默认：顺序调用
-            'strategy' => \Overtrue\EasySms\Strategies\OrderStrategy::class,
-            // 默认可用的发送网关
-            'gateways' => [
-                'alidayu' // ,'yunpian', 'aliyun',
-            ],
-        ],
-        // 可用的网关配置
-        'gateways' => [
-            'errorlog' => [
-                'file' => ROOT_PATH . 'runtime/smslog/sms.log',
-            ],
-            'alidayu'  => [
-                'app_key'    => 'appkey换成自己的',
-                'app_secret' => 'secret换成自己的',
-                'sign_name'  => '签名换成自己的',
-                'tpl'        => 'SMS_85205029'
-            ]
-            /*,
-            'yunpian' => [
-                'api_key' => '824f0ff2f71cab52936axxxxxxxxxx',
-            ],
-            'aliyun' => [
-                'access_key_id' => '',
-                'access_key_secret' => '',
-                'sign_name' => '',
-            ],*/
 
-        ],
-    ],
-
-    //阿里云oss配置
-    'aliyun_oss' => [
-        'KeyID'     => '',
-        'KeySecret' => '',
-        'EndPoint'  => '',
-        'Bucket'    => '',
-        'url'       => 'https://demo.oss.aliyun.com/'
-    ],
-
-    //七牛云存储
-    'qiniu' => [
-        'AccessKey' => '',
-        'SecretKey' => '',
-        'Bucket'=>'',
-        'url'=>'http://demo.bkt.clouddn.com/'
-    ],
     //附件配置
     'attchment'=>[
         'path'=>ROOT_PATH.'public/uploads/attachment/',  //上传目录配置（相对于根目录）
