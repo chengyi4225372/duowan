@@ -1,0 +1,5 @@
+.idea
+runtime
+thinkphp
+vendor
+application/databases.php

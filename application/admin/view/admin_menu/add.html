@@ -1,0 +1,96 @@
+<link rel="stylesheet" href="__PLUGINS__/iconpicker/css/iconpicker.min.css">
+<script src="__PLUGINS__/iconpicker/js/iconpicker.min.js"></script>
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            {include file="template/form_header" /}
+            <form id="dataForm" class="dataForm form-horizontal" action="" method="post" enctype="multipart/form-data">
+                <div class="box-body">
+                    <div class="fields-group">
+                        {if isset($info)}
+                        <input id="id" name="id" value="{$info.id}" hidden placeholder="请勿修改">
+                        {/if}
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">上级菜单</label>
+                            <div class="col-sm-10 col-md-4">
+                                <div class="input-group">
+                                    <select name="parent_id" id="parent_id" class="form-control">
+                                        <option value="0">/</option>
+                                        {$selects}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="title" class="col-sm-2 control-label">名称</label>
+                            <div class="col-sm-10 col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+                                    <input maxlength="50" id="title" name="title" value="{$info.title|default=''}" class="form-control" placeholder="请输入菜单名称">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="url" class="col-sm-2 control-label">url</label>
+                            <div class="col-sm-10 col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-internet-explorer"></i></span>
+                                    <input maxlength="100" id="url" name="url" value="{$info.url|default=''}" class="form-control" placeholder="菜单url">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="icon" class="col-sm-2 control-label">图标</label>
+                            <div class="col-sm-10 col-md-4">
+                                <div class="input-group iconpicker-container">
+                                    <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+                                    <input maxlength="30" id="icon" name="icon" value="{$info.icon|default='fa-list'}" class="form-control  iconpicker-element iconpicker-input" placeholder="请输入图标class">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="sort_id" class="col-sm-2 control-label">排序</label>
+                            <div class="col-sm-10 col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-sort-amount-asc"></i></span>
+                                    <input max="9999" min="1" type="number" id="sort_id" name="sort_id" value="{$info.sort_id|default='1000'}" class="form-control" placeholder="默认1000">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="is_show" class="col-sm-2 control-label">是否显示</label>
+                            <div class="col-sm-10 col-md-4">
+                                <div class="input-group iconpicker-container">
+                                    <input {if (isset($info) && $info.is_show==1) || !isset($info)}checked{/if}
+                                    value="{$info.is_show|default='1'}"
+                                    class="form-input-switch" type="checkbox" data-input="is_show">
+                                    <input id="is_show" name="is_show" value="{$info.is_show|default='1'}" type="hidden" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="log_type" class="col-sm-2 control-label">日志请求方式</label>
+                            <div class="col-sm-10 col-md-4">
+                                <div class="input-group">
+                                    <select name="log_type" id="log_type" class="form-control">
+                                        {foreach name='logtype' item='item'}
+                                        <option value="{$key}" {if isset($info) && $info.log_type==$key}selected{/if}>{$item}</option>
+                                        {/foreach}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {include file="template/form_footer" /}
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function(){
+        $('#icon').iconpicker({placement: 'bottomLeft'});
+    });
+</script>
