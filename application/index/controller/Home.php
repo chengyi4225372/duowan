@@ -15,7 +15,7 @@ class Home extends  Controller
         $this->request = Request::instance();
     }
 
-    
+
 
 
 }
