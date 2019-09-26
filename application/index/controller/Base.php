@@ -5,7 +5,7 @@ namespace app\index\controller;
 use think\Controller;
 use think\Request;
 use think\Db;
-class Home extends  Controller
+class Base extends  Controller
 {
     protected  $request ='';
 
