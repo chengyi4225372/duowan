@@ -22,9 +22,12 @@ class Auth extends Base
     {
         if ($this->request->isPost()) {
 
+            //注释
+            /*
             if (!$this->check_geetest()) {
                 return $this->error('验证失败');
             }
+            */
 
             $result = $this->validate($this->param, 'AdminUser.login');
 
@@ -138,29 +141,9 @@ class Auth extends Base
         return $this->success('登录成功', $redirect_uri);
     }
 
-    //微博登录
-    public function weibo()
-    {
 
 
-    }
-
-
-    //github登录
-    public function github()
-    {
-
-    }
-
-
-    //微信登录
-    public function wechat()
-    {
-
-    }
-
-
-    //使用前验证
+    //使用前验证 todo 未使用
     public function get_geetest_status()
     {
         $geetest = new GeetestLib(config('geetest.id'), config('geetest.key'));

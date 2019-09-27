@@ -52,9 +52,11 @@
                     </div>
                 </div>
             </div>
+            <!--
             <div id="wait" class="alert alert-warning alert-dismissible show" style="padding: 8px;margin-bottom: 10px;">
                 正在加载验证码...
             </div>
+            -->
             <div class="row">
                 <div class="col-xs-12">
                     <div class="form-group">
@@ -72,16 +74,15 @@
                 </div>
                 <div class="col-xs-4">
                     {:token()}
-                    <button type="submit" class="btn btn-primary btn-block btn-flat" id="login_button" disabled="disabled">登录</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-flat" id="login_button" >登录</button>
                 </div>
             </div>
         </form>
-        <div class="social-auth-links">
-            <a href="qqlogin.html" class="btn btn-primary"><i class="fa fa-qq"></i>QQ登录</a>
-        </div>
+
     </div>
 </div>
 <script>
+    /*
     $(function () {
         $("#user_name").focus();
     });
@@ -120,18 +121,9 @@
             }, handlerEmbed);
         }
     });
+
+     */
 </script>
 </body>
 </html>
-<script>
-    console.log('%c BUG？反馈->%c i@yufuping.com',';color:#1e90ff',';color:#070cfe');
-</script>
-<script>
-    var _hmt = _hmt || [];
-    (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?d740981d25ee4b445e195a1e4a37630b";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
+
