@@ -41,11 +41,7 @@ return [
     //二维码url显示路径
     'qrcode_url'                 => DS . 'uploads' . DS . 'admin' . DS . 'qrcode' . DS,
 
-    //后台邮件相关参数设置
-    'email_from_name'            => '于破熊', // 发件人
-    'email_smtp'                 => 'smtp.163.com', // SMTP服务器
-    'email_username'             => '填你的@163.com', // 账号
-    'email_password'             => '填你的', // 密码
+
 
     'admin_auth'=>[
         'auth_on'           => 1, // 权限开关
