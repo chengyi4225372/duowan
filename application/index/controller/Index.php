@@ -2,9 +2,14 @@
 namespace  app\index\controller;
 
 use app\index\controller\Base;
+use think\Db;
 
 class Index  extends  Base {
 
+
+    protected $play = 'play_cates';
+
+    protected $order = 'order';
 
     public function _initialize()
     {
@@ -15,14 +20,30 @@ class Index  extends  Base {
         }
     }
 
+
     //1 选择页面
     public  function index(){
          if($this->request->isGet()){
+             $cates = Db::name($this->play)->order('id desc')->select();
+             $this->assign('cates',$cates);
              return $this->fetch();
          }
 
          if($this->request->isPost()){
+            $cid = input('post.cid','','int');
+            $mid = input('post.mid','','int');
 
+            if(empty($cid) || empty($mid)|| !isset($mid)){
+                return false;
+            }
+
+            $res = Db::name($this->order)->insertGetId(['cid'=>$cid,'mid'=>$mid,'orderId'=>makeOrder()]);
+
+            if($res){
+                return json(['code'=>200,'msg'=>'操作成功','order'=>$res]);
+            }else{
+                return json(['code'=>400,'msg'=>'網路故障，請重新操作']);
+            }
          }
     }
 
@@ -33,6 +54,20 @@ class Index  extends  Base {
         }
 
         if($this->request->isPost()){
+            $order = input('post.order','','int');
+            $pid   = input('post.pid','','int');
+
+            if(empty($pid) || empty($order)|| $order <=0 || !isset($order)){
+                return false;
+            }
+
+            $res = Db::name($this->order)->where('id',$order)->update(['pid'=>$pid]);
+
+            if($res){
+                return json(['code'=>200,'pid'=>$pid]);
+            }else{
+                return json(['code'=>400,'msg'=>'操作失败']);
+            }
 
         }
     }

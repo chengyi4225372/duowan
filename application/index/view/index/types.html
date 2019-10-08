@@ -17,14 +17,14 @@
 <div class="container" id="Invoice" data-url="https://db-668.net/invoice/submit" data-formurl="https://db-668.net/invoice/information">
     <img src="https://db-668.net/html/images/3.jpg" class="img-fluid rounded mx-auto d-block" style="margin-top: 20px;">
     <div class="input-group" style="margin-top: 20px;">
-        <select class="form-control" id="InvoiceGame">
-            <option value="">請選擇遊戲</option>
+        <select class="form-control" id="pid">
+            <option value="">請選擇充值類型</option>
             <option value="1">轉數塊</option>
             <option value="2">7-11充值</option>
             <option value="3">好友轉賬</option>
         </select>
     </div>
-    <input type="hidden" name="InvoicePackageID" id="InvoicePackageID" value="8">
+    <input type="hidden" name="orderid" id="orderid" value="{$Think.get.order}">
     <div class="input-group" style="margin-top: 20px;">
         <button id="InvoiceButton" type="button" class="btn btn-primary btn-lg btn-block">開設</button>
     </div>
@@ -35,6 +35,26 @@
 <script src="__INDEX__/js/less.min.js"></script>
 <script src="/static/admin/plugins/layer/layer.js"></script>
 
+<script>
+  $("#InvoiceButton").click(function(){
+      var pid   = $('#pid option:selected').val();
+      var order = $("#orderid").val();
+
+      if(pid == '' || pid == undefined){
+          layer.msg('請選擇充值類型');
+          return false;
+      }
+
+      var url = "{:url('index/types')}";
+
+      $.post(url,{'pid':pid,'order':order},function(ret){
+
+      },'json')
+  })
+
+
+
+</script>
 
 </body>
 </html>

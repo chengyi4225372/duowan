@@ -21,14 +21,12 @@
     <div class="input-group" style="margin-top: 20px;">
         <select class="form-control" id="InvoiceGame">
             <option value="">請選擇遊戲</option>
-            <option value="GWC 388 JOKER GAMING">GWC 388 JOKER GAMING</option>
-            <option value="GOLD777">GOLD777</option>
-            <option value="sky1388">sky1388</option>
-            <option value="LIVE22">LIVE22</option>
-            <option value="Tiger666">Tiger666</option>
+            {volist name='cates' id='vo'}
+            <option value="{$vo.id}">{$vo.title}</option>
+            {/volist}
         </select>
     </div>
-    <input type="hidden" name="InvoicePackageID" id="InvoicePackageID" value="8">
+    <input type="hidden" name="member" id="member" value="{$Think.session.member.id}">
     <div class="input-group" style="margin-top: 20px;">
         <button id="InvoiceButton" type="button" class="btn btn-primary btn-lg btn-block">開設帳單</button>
     </div>
@@ -40,6 +38,30 @@
 <script src="/static/admin/plugins/layer/layer.js"></script>
 
 <script>
+    $('#InvoiceButton').click(function(){
+        var cid = $('#InvoiceGame option:selected').val();
+
+        var mid = $('#member').val();
+
+        if(cid == '' || cid == undefined){
+            layer.msg('請選擇遊戲類型');
+            return false;
+        }
+
+        var url = "{:url('index/index')}";
+
+        $.post(url,{'cid':cid,'mid':mid},function(ret){
+                  if(ret.code == 200){
+                      window.location.href="{:url('index/types')}?order="+ret.order;
+                  }
+
+                  if(ret.code == 400){
+                      layer.msg(ret.msg,function(){
+                          parent.location.reload();
+                      })
+                  }
+        },'json')
+    })
 
 
 </script>
