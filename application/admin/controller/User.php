@@ -113,45 +113,29 @@ class User extends Base
 
     public function edit()
     {
-        $info = Users::get($this->id);
-        if ($this->request->isPost()) {
-
-            $resultValidate = $this->validate($this->param, 'User.admin_edit');
-            /*
-            if (true !== $resultValidate) {
-                return $this->error($resultValidate);
-            }
-
-            if ($this->request->file('headimg')) {
-                $attachment = new Attachments();
-                $file       = $attachment->upload('headimg');
-                if ($file) {
-                    $this->param['headimg'] = $file->url;
-                } else {
-                    return $this->error($attachment->getError());
-                }
-            }
-
-            if (isset($this->param['password'])) {
-                if(!empty($this->param['password'])){
-                    $this->param['password'] = md5(md5($this->param['password']));
-                }else{
-                    unset($this->param['password']);
-                }
-
-            }
-            */
-            if (false !== $info->save($this->param)) {
-                return $this->success();
-            }
-            return $this->error();
+        if($this->request->isGet()){
+            $info = Users::get($this->id);
+            $this->assign([
+                'info'       => $info,
+                'user_level' => UserLevels::all(),
+            ]);
+            return $this->fetch('add');
         }
 
-        $this->assign([
-            'info'       => $info,
-            'user_level' => UserLevels::all(),
-        ]);
-        return $this->fetch('add');
+        if ($this->request->isPost()) {
+            $data['name']   = input('post.name','','trim');
+            $data['status'] = input('post.status','','int');
+            $id       = input('post.id','','int');
+
+            $ret = Users::update($data,['id'=>$id]);
+
+            if (false !== $ret) {
+                return json(['code'=>200,'msg'=>'操作成功']);
+            }
+            return json(['code'=>400,'msg'=>'操作失败']);
+        }
+
+
     }
 
 

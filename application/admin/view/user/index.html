@@ -45,7 +45,7 @@
                     <tr>
                         <td>{$item.id}</td>
                         <td>{$item.name}</td>
-                        <td>{$item.last_login_time}</td>
+                        <td>{$item['last_login_time']}</td>
                         <td>
                             <a class="label label-{if $item.status==1}success{else/}danger{/if} AjaxButton" title="{if $item.status==1}点击禁用{else/}点击启用{/if}" data-id="{$item.id}" data-confirm="1" data-url="disable.html">{$item.admin_status_text}</a>
                         </td>

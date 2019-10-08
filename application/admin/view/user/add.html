@@ -68,10 +68,13 @@
     $('.data-add').click(function(){
          var url = "{:url('user/add')}";
 
+         var url1 = "{:url('user/edit')}";
+
          var item  = {};
 
-         item.name = $('#name').val();
-         item.status = $('#status').val();
+         item.name    = $('#name').val();
+         item.status  = $('#status').val();
+         item.id      = $('#id').val();
 
          if(item.name == '' || item.name== undefined){
              layer.msg('帳號不能為空!');
@@ -79,18 +82,36 @@
          }
          console.log(item);
 
-         $.post(url,item,function(ret){
-           if(ret.code == 200){
-              layer.msg(ret.msg,function(){
-                  parent.location.href = "{:url('user/index')}";
-              })
-           }
+         if(item.id == '' || item.id == undefined){
+             $.post(url,item,function(ret){
+                 if(ret.code == 200){
+                     layer.msg(ret.msg,function(){
+                         parent.location.href = "{:url('user/index')}";
+                     })
+                 }
 
-           if(ret.code == 400){
-               layer.msg(ret.msg,function(){
-                   parent.location.reload();
-               })
-           }
-         },'json')
+                 if(ret.code == 400){
+                     layer.msg(ret.msg,function(){
+                         parent.location.reload();
+                     })
+                 }
+             },'json')
+         }else{
+             $.post(url1,item,function(ret){
+                 if(ret.code == 200){
+                     layer.msg(ret.msg,function(){
+                         parent.location.href = "{:url('user/index')}";
+                     })
+                 }
+
+                 if(ret.code == 400){
+                     layer.msg(ret.msg,function(){
+                         parent.location.reload();
+                     })
+                 }
+             },'json')
+         }
+
+
     })
 </script>

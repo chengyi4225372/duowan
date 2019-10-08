@@ -28,6 +28,7 @@ class Login  extends  Controller {
 
            $res  = Db::name('users')->where('name',$name)->find();
 
+           $this->checktoken($res['token']);
 
 
         }
