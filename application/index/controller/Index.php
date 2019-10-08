@@ -16,7 +16,6 @@ class Index  extends  Base {
          }
     }
 
-
     //充值方式
     public function types(){
         if($this->request->isGet()){
@@ -27,9 +26,6 @@ class Index  extends  Base {
 
         }
     }
-
-
-
 
     //type1:好友转账
     public function info(){
@@ -43,7 +39,7 @@ class Index  extends  Base {
 
     }
 
-  //type2:充值模板
+    //type2:充值模板
     public function chong(){
         if($this->request->isGet()){
             return $this->fetch();
@@ -53,7 +49,6 @@ class Index  extends  Base {
 
         }
     }
-
 
     //type3:转速快
     public function zhuan(){
