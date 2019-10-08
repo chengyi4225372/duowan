@@ -90,18 +90,22 @@ class User extends Base
     public function add()
     {
         if ($this->request->isPost()) {
-            $resultValidate = $this->validate($this->param, 'User.admin_add');
-            if (true !== $resultValidate) {
-                return $this->error($resultValidate);
-            }
-            $this->param['password'] = md5(md5($this->param['password']));
-            $attachment              = new Attachments();
-            $file                    = $attachment->upload('headimg');
-            if ($file) {
-                $this->param['headimg'] = $file->url;
-            }else{
-                return $this->error($attachment->getError());
-            }
+
+                $resultValidate = $this->validate($this->param, 'User.admin_add');
+                 /*
+                        if (true !== $resultValidate) {
+                          return $this->error($resultValidate);
+                        }
+
+                         $this->param['password'] = md5(md5($this->param['password']));
+                         $attachment              = new Attachments();
+                         $file                    = $attachment->upload('headimg');
+                         if ($file) {
+                             $this->param['headimg'] = $file->url;
+                         }else{
+                             return $this->error($attachment->getError());
+                         }
+                         */
 
             $result = Users::create($this->param);
             if ($result) {
@@ -120,7 +124,9 @@ class User extends Base
     {
         $info = Users::get($this->id);
         if ($this->request->isPost()) {
+
             $resultValidate = $this->validate($this->param, 'User.admin_edit');
+            /*
             if (true !== $resultValidate) {
                 return $this->error($resultValidate);
             }
@@ -143,7 +149,7 @@ class User extends Base
                 }
 
             }
-
+            */
             if (false !== $info->save($this->param)) {
                 return $this->success();
             }
