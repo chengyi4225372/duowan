@@ -89,34 +89,25 @@ class User extends Base
 
     public function add()
     {
-        if ($this->request->isPost()) {
-
-                $resultValidate = $this->validate($this->param, 'User.admin_add');
-                 /*
-                        if (true !== $resultValidate) {
-                          return $this->error($resultValidate);
-                        }
-
-                         $this->param['password'] = md5(md5($this->param['password']));
-                         $attachment              = new Attachments();
-                         $file                    = $attachment->upload('headimg');
-                         if ($file) {
-                             $this->param['headimg'] = $file->url;
-                         }else{
-                             return $this->error($attachment->getError());
-                         }
-                         */
-
-            $result = Users::create($this->param);
-            if ($result) {
-                return $this->success();
-            }
-            return $this->error();
+        if($this->request->isGet()){
+           return $this->fetch();
         }
-        $this->assign([
-            'user_level' => UserLevels::all(),
-        ]);
-        return $this->fetch();
+
+        if ($this->request->isPost()) {
+          $data['name']   = input('post.name','','trim');
+          $data['status'] = input('post.status','','int');
+          $data['timeout']= 604800;
+          $data['token']  = maketoken();
+
+          $ret = Users::create($data);
+
+          if($ret){
+              return json(['code'=>200,'msg'=>'操作成功']);
+          }else{
+              return json(['code'=>400,'msg'=>'操作失败']);
+          }
+
+        }
     }
 
 

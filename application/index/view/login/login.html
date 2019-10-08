@@ -31,7 +31,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text" id="InputLoginCode">@</span>
         </div>
-        <input type="text" class="form-control" id="LoginCode" data-url="https://db-668.net/login" placeholder="帳戶號碼" aria-label="帳戶號碼" aria-describedby="InputLoginCode">
+        <input type="text" class="form-control" id="LoginCode" data-url="{:url('login/login')}" placeholder="帳戶號碼" aria-label="帳戶號碼" aria-describedby="InputLoginCode">
     </div>
     <div class="input-group">
         <button id="LoginButton" type="button" class="btn btn-primary btn-lg btn-block">登入</button>
@@ -45,13 +45,21 @@
 
 <script>
     $('#LoginButton').click(function(){
-        layer.msg(1111);
+         var url  = $(this).attr('data-url');
+
+         var name = $("#LoginCode").val();
+
+         if(name == '' || name== undefined){
+             layer.msg('登錄名不能為空！');
+             return ;
+         }
+
+         $.post(url,{'name':name},function(ret){
+
+         },'json')
     })
 
 </script>
-
-
-
 
 </body>
 </html>
