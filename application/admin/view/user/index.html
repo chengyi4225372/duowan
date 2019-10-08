@@ -1,3 +1,4 @@
+
 <div class="row">
     <div class="col-md-12">
         <div class="box">
@@ -28,7 +29,15 @@
 <div class="row">
     <div class="col-md-12">
         <div class="box">
-            {include file="template/data_header" /}
+
+            <div class="box-header">
+                <div>
+                    <a title="新增" class="btn btn-primary btn-sm user-add" data-href="{:url('user/add')}">
+                        新增
+                    </a>
+                </div>
+            </div>
+
             <div class="box-body table-responsive">
                 <table class="table table-hover table-bordered datatable" width="100%">
                     <thead>
@@ -50,8 +59,8 @@
                             <a class="label label-{if $item.status==1}success{else/}danger{/if} AjaxButton" title="{if $item.status==1}点击禁用{else/}点击启用{/if}" data-id="{$item.id}" data-confirm="1" data-url="disable.html">{$item.admin_status_text}</a>
                         </td>
                         <td class="td-do">
-                            <a href="edit.html?id={$item.id}"
-                               class="btn btn-primary btn-xs" title="修改">
+                            <a data-href="{:url('user/edit',array('id'=>$item.id))}"
+                               class="btn btn-primary btn-xs user-edit" title="修改">
                                 <i class="fa fa-pencil"></i>
                             </a>
                             <a class="btn btn-danger btn-xs AjaxButton" title="删除" data-id="{$item.id}" data-url="del.html">
@@ -65,4 +74,30 @@
             </div>
             {include file="template/data_footer" /}
         </div>
- 
+
+        <script>
+            $('.user-add').click(function(){
+                var url = $(this).attr('data-href');
+
+                layer.open({
+                    type: 2,
+                    title: '添加',
+                    area: ['50%', '60%'],
+                    anim: 2,
+                    content: url, //iframe的url，no代表不显示滚动条
+                })
+            })
+
+            $('.user-edit').click(function(){
+                var url = $(this).attr('data-href');
+
+                layer.open({
+                    type: 2,
+                    title: '编辑',
+                    area: ['50%', '60%'],
+                    anim: 2,
+                    content: url, //iframe的url，no代表不显示滚动条
+                })
+            })
+
+        </script>

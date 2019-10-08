@@ -10,11 +10,10 @@ use app\index\controller\Base;
 
 class Login  extends  Base {
 
-
-
     public function  login(){
 
         if($this->request->isGet()){
+
             if($this->check_user() == true){
                 return $this->redirect('index/index');
             }
