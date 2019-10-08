@@ -45,10 +45,32 @@
           return false;
       }
 
+      if(order == '' ||  order == undefined){
+          layer.msg('資料丟失，提交不合法');
+          return ;
+      }
+
       var url = "{:url('index/types')}";
 
       $.post(url,{'pid':pid,'order':order},function(ret){
+            if(ret.code == 200){
+                if(ret.pid ==1){
+                    window.location.href="";
+                }
+                if(ret.pid == 2){
+                    window.location.href="{:url('index/chong')}?order="+order;;
+                }
 
+                if(ret.pid == 3){
+                    window.location.href="{:url('index/info')}?order="+order;
+                }
+            }
+
+            if(ret.code == 400){
+                layer.msg(ret.msg,function(){
+                    parent.location.reload();
+                })
+            }
       },'json')
   })
 
