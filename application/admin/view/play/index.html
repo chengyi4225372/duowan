@@ -1,0 +1,119 @@
+<div class="row">
+
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box">
+
+            <div class="box-header">
+                <div>
+                    <a title="新增" class="btn btn-primary btn-sm add" data-href="{:url('play/add')}">
+                        新增
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="box-body table-responsive">
+                <table class="table table-hover table-bordered datatable" width="100%">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>名称</th>
+                        <th>创建时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                 {volist name='list' id='vo'}
+                    <tr>
+                        <td>{$vo.id}</td>
+                        <td>{$vo.title}</td>
+                        <td>{$vo.create_time|date='Y-m-d h:i',###}</td>
+
+                        <td class="td-do">
+                            <a data-href="{:url('play/edit',array('id'=>$vo.id))}"
+                               class="btn btn-primary btn-xs edit" title="修改">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                            <a class="btn btn-danger btn-xs del"
+                               title="删除"  data-url="{:url('play/del',array('id'=>$vo.id))}">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {/volist}
+
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="box-footer">
+                {$list->render()}
+                <label class="control-label pull-right" style="margin-right: 10px; font-weight: 100;">
+                    {if isset($total)}
+                    <small>共{$total} 条记录</small>
+                    &nbsp;
+                    {/if}
+                    <small>每页显示10条</small>
+                </label>
+            </div>
+
+
+        </div>
+
+<script>
+
+    $('.add').click(function(){
+        var url = $(this).attr('data-href');
+
+        layer.open({
+            type: 2,
+            title: '添加',
+            area: ['50%', '60%'],
+            anim: 2,
+            content: url, //iframe的url，no代表不显示滚动条
+        })
+    })
+
+    $('.edit').click(function(){
+        var url = $(this).attr('data-href');
+
+        layer.open({
+            type: 2,
+            title: '编辑',
+            area: ['50%', '60%'],
+            anim: 2,
+            content: url, //iframe的url，no代表不显示滚动条
+        })
+    })
+
+    $('.del').click(function(){
+
+        var url = $(this).attr('data-url');
+
+        layer.confirm('您是确定要删除？', {
+            btn: ['确定','点错了'] //按钮
+        }, function(){
+            $.get(url,function(ret){
+                if(ret.code == 200){
+                    layer.msg(ret.msg,function(){
+                        parent.location.reload();
+                    })
+                }
+
+                if(ret.code == 400){
+                    layer.msg(ret.msg,function(){
+                        parent.location.reload();
+                    })
+                }
+            },'json')
+        }, function(){
+            layer.close();
+        });
+
+    })
+
+</script>
