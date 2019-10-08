@@ -22,8 +22,8 @@
                                 <input  type="file" name="file" id="file" class="form-control" onchange="upload_file()" >
                             </div>
                             <div class="input-group file-caption-main">
-                                <img id="img" src="{$info.images|default='/uploads/attachment/20180808/1c6bcdb692cc11df6b393e90d30af5e2.png'}" style="max-width: 200px;max-height: 200px">
-                                <input type="hidden" value="{$info.images}" id="images">
+                                <img id="img" src="{$info.imgs|default='/static/index/images/images.png'}" style="max-width: 200px;max-height: 200px">
+                                <input type="hidden" value="{$info.imgs}" id="images">
                                 <input type="hidden" value="{$info.id}" id="mid">
                             </div>
                         </div>
@@ -91,7 +91,7 @@
             return ;
         }
 
-        var url = "{:url('deng/index')}";
+        var url = "{:url('deng/types')}";
 
         $.post(url,data,function(ret){
             if(ret.code == 200){

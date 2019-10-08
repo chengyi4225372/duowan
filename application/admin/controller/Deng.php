@@ -24,19 +24,19 @@ class Deng extends Base
 
       if($this->request->isPost()){
           $id     = input('post.mid','','int');
-          $images = input('post.images','','int');
+          $images = input('post.images','','trim');
           if(empty($id) || $id <=0){
-              $res = Db::name($this->login)->insertGetId(['images'=>$images]);
+              $res = Db::name($this->login)->insertGetId(['imgs'=>$images]);
           }
 
           if(isset($id)){
-              $res = Db::name($this->login)->where('id',$id)->update(['images'=>$images]);
+              $res = Db::name($this->login)->where('id',$id)->update(['imgs'=>$images]);
           }
 
-          if($res){
+          if($res !== false){
               return json(['code'=>200,'msg'=>'操作成功']);
           }else{
-              return json(['code'=>200,'msg'=>'操作失败']);
+              return json(['code'=>400,'msg'=>'操作失败']);
           }
       }
 
@@ -52,20 +52,20 @@ class Deng extends Base
 
         if($this->request->isPost()){
             $id     = input('post.mid','','int');
-            $images = input('post.images','','int');
+            $images = input('post.images','','trim');
 
             if(empty($id) || $id <= 0){
-                $res = Db::name($this->type)->insertGetId(['images'=>$images]);
+                $res = Db::name($this->type)->insertGetId(['imgs'=>$images]);
             }
 
             if(isset($id)){
-                $res = Db::name($this->type)->where('id',$id)->update(['images'=>$images]);
+                $res = Db::name($this->type)->where('id',$id)->update(['imgs'=>$images]);
             }
 
-            if($res){
+            if($res !== false){
                 return json(['code'=>200,'msg'=>'操作成功']);
             }else{
-                return json(['code'=>200,'msg'=>'操作失败']);
+                return json(['code'=>400,'msg'=>'操作失败']);
             }
         }
     }
