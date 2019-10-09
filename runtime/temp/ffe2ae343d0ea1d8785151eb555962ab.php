@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:109:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/index\view\index\index.html";i:1570526557;s:99:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\index\view\public\menu.html";i:1570526199;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:109:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/index\view\index\index.html";i:1570602978;s:99:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\index\view\public\menu.html";i:1570600453;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,25 +26,25 @@
                 <a class="nav-link" href="<?php echo url('index/index'); ?>">增值</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://db-668.net/invoice/history">帳單記錄</a>
+                <a class="nav-link" href="<?php echo url('index/history'); ?>">帳單記錄</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://db-668.net/start">開始遊戲</a>
+                <a class="nav-link" href="<?php echo url('index/index'); ?>">開始遊戲</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://db-668.net/news">最新消息</a>
+                <a class="nav-link" href="<?php echo url('news/index'); ?>">最新消息</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" target="_blank" href="https://api.whatsapp.com/send?phone=85256348549">WhatsApp 查詢</a>
+                <a class="nav-link" target="_blank" href="<?php echo (isset($common['furl']) && ($common['furl'] !== '')?$common['furl']:''); ?>">WhatsApp 查詢</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" target="_blank" href="https://dl3.pushbulletusercontent.com/HYePdIQYFn1LeQsLUGMGXNxWzCWKcfVi/DB-World.mobileconfig">下載多搏世界(IOS)</a>
+                <a class="nav-link" target="_blank" href="<?php echo (isset($common['iurl']) && ($common['iurl'] !== '')?$common['iurl']:''); ?>">下載多搏世界(IOS)</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" target="_blank" href="https://db-668.net/Download/db-668.apk">下載多搏世界(安卓)</a>
+                <a class="nav-link" target="_blank" href="<?php echo (isset($common['aurl']) && ($common['aurl'] !== '')?$common['aurl']:''); ?>">下載多搏世界(安卓)</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" target="_blank" href="https://www.facebook.com/db668/">FB粉絲專頁</a>
+                <a class="nav-link" target="_blank" href="<?php echo (isset($common['furl']) && ($common['furl'] !== '')?$common['furl']:''); ?>">FB粉絲專頁</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo url('login/logout'); ?>">登出</a>
@@ -54,8 +54,8 @@
 </nav>
 
 
-<div class="container" id="Invoice" data-url="https://db-668.net/invoice/submit" data-formurl="https://db-668.net/invoice/information">
-    <img src="https://db-668.net/html/images/3.jpg" class="img-fluid rounded mx-auto d-block" style="margin-top: 20px;">
+<div class="container" id="Invoice" >
+    <img src="<?php echo $type_img['imgs']; ?>" class="img-fluid rounded mx-auto d-block" style="margin-top: 20px;">
     <div class="input-group" style="margin-top: 20px;">
         <select class="form-control" id="InvoiceGame">
             <option value="">請選擇遊戲</option>

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:109:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/index\view\login\login.html";i:1570517835;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:109:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/index\view\login\login.html";i:1570602847;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +27,7 @@
         </ul>
     </div>
 </nav><div class="container">
-    <img src="https://db-668.net/html/images/3.jpg" class="img-fluid rounded mx-auto d-block" style="margin-top: 20px;">
+    <img src="<?php echo $login_img['imgs']; ?>" class="img-fluid rounded mx-auto d-block" style="margin-top: 20px;">
     <div class="input-group mb-3" style="margin-top: 20px;">
         <div class="input-group-prepend">
             <span class="input-group-text" id="InputLoginCode">@</span>
