@@ -37,7 +37,7 @@ class Index  extends  Base {
                 return false;
             }
 
-            $res = Db::name($this->order)->insertGetId(['cid'=>$cid,'mid'=>$mid,'orderId'=>makeOrder()]);
+            $res = Db::name($this->order)->insertGetId(['cid'=>$cid,'mid'=>$mid,'orderId'=>makeOrder(),'create_time'=>time()]);
 
             if($res){
                 return json(['code'=>200,'msg'=>'操作成功','order'=>$res]);
@@ -79,6 +79,20 @@ class Index  extends  Base {
         }
 
         if($this->request->isPost()){
+           $id  = input('post.order','','int');
+           $alipay  = input('post.alipay','','trim');
+
+           if(empty($id) || !isset($id)){
+               return false;
+           }
+
+           $res = Db::name('order')->where(['id'=>$id])->update(['alipay'=>$alipay]);
+
+           if($res){
+               return json(['code'=>200,'msg'=>'操作成功']);
+           }else{
+               return json(['code'=>400,'msg'=>'操作失败']);
+           }
 
         }
 
@@ -91,7 +105,20 @@ class Index  extends  Base {
         }
 
         if($this->request->isPost()){
+              $order = input('post.order','','int');
+              $imgs  = input('post.imgs','','trim');
 
+              if(empty($order) || !isset($order)){
+                  return false;
+              }
+
+              $ret = Db::name('order')->where(['id'=>$order])->update(['imgs'=>$imgs]);
+
+              if($ret){
+                  return json(['code'=>200,'msg'=>'操作成功']);
+              }else{
+                  return json(['code'=>400,'msg'=>'操作失败']);
+              }
         }
     }
 
@@ -113,6 +140,23 @@ class Index  extends  Base {
     }
 
 
+
+    public function Upimgs(){
+        // 获取上传文件
+        $file =$this->request->file('file');
+        // 验证图片,并移动图片到框架目录下。
+        $path = ROOT_PATH.'public/Upload/imgs/';
+        $info = $file-> move($path);
+        if($info){
+            $mes = $info->getSaveName();
+            $mes = str_replace("\\",'/',$mes);
+            return json(['code'=>'200','msg'=>'上传成功','path'=>'/Upload/imgs/'.$mes]);
+        }else{
+            // 文件上传失败后的错误信息
+            $mes = $file->getError();
+            return json(['code'=>'400','msg'=>$mes]);
+        }
+    }
 
 
 }

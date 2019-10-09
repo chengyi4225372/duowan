@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:108:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/index\view\index\info.html";i:1570528055;s:99:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\index\view\public\menu.html";i:1570526199;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:108:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/index\view\index\info.html";i:1570605109;s:99:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\index\view\public\menu.html";i:1570600453;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,25 +24,25 @@
                 <a class="nav-link" href="<?php echo url('index/index'); ?>">增值</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://db-668.net/invoice/history">帳單記錄</a>
+                <a class="nav-link" href="<?php echo url('index/history'); ?>">帳單記錄</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://db-668.net/start">開始遊戲</a>
+                <a class="nav-link" href="<?php echo url('index/index'); ?>">開始遊戲</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://db-668.net/news">最新消息</a>
+                <a class="nav-link" href="<?php echo url('news/index'); ?>">最新消息</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" target="_blank" href="https://api.whatsapp.com/send?phone=85256348549">WhatsApp 查詢</a>
+                <a class="nav-link" target="_blank" href="<?php echo (isset($common['furl']) && ($common['furl'] !== '')?$common['furl']:''); ?>">WhatsApp 查詢</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" target="_blank" href="https://dl3.pushbulletusercontent.com/HYePdIQYFn1LeQsLUGMGXNxWzCWKcfVi/DB-World.mobileconfig">下載多搏世界(IOS)</a>
+                <a class="nav-link" target="_blank" href="<?php echo (isset($common['iurl']) && ($common['iurl'] !== '')?$common['iurl']:''); ?>">下載多搏世界(IOS)</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" target="_blank" href="https://db-668.net/Download/db-668.apk">下載多搏世界(安卓)</a>
+                <a class="nav-link" target="_blank" href="<?php echo (isset($common['aurl']) && ($common['aurl'] !== '')?$common['aurl']:''); ?>">下載多搏世界(安卓)</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" target="_blank" href="https://www.facebook.com/db668/">FB粉絲專頁</a>
+                <a class="nav-link" target="_blank" href="<?php echo (isset($common['furl']) && ($common['furl'] !== '')?$common['furl']:''); ?>">FB粉絲專頁</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo url('login/logout'); ?>">登出</a>
@@ -52,14 +52,7 @@
 </nav>
 
 <div class="container" style="margin-bottom: 20px;">
-     <!--
-    <h3 class="text-center" style="margin-top: 20px; color: #FFF;">GOLD777</h3>
-    <h6 class="text-center" style="margin-top: 20px; color: #FFF;">**請務必核實需要的充值帳號,一經充值成功無法退回!</h6>
-    <h2 class="text-center" style="margin-top: 20px; color: #FFF; ">
-    <h3 class="text-center" style="margin-top: 20px; color: #FFF;">轉數快:55738941</h3>
-    <h6 class="text-center" style="margin-top: 20px; color: #FF0000;">如使用轉數快充值請於最下方填寫付款的英文全名和充值金額</h6>
-    -->
-    <br><br>
+
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
 
         <a href="https://qr.alipay.hk/2810040101z4vqzxexbhrj7y69">
@@ -67,24 +60,56 @@
         </a>
         <br><br>
         <div class="input-group" style="margin-top: 20px;">
-            <form id="Update" action="https://db-668.net/invoice/update" method="post" enctype="multipart/form-data" style="margin: 0 auto 0 auto;">
-                <input type="text" class="form-control" name="Transaction" id="Transaction" placeholder="支付寶帳號/收據號碼">
-                <input type="hidden" name="InvoiceID" value="5954">
+            <form id="Update"  method="post" enctype="multipart/form-data" style="margin: 0 auto 0 auto;">
+                <input type="text" class="form-control" id="alipay" placeholder="支付寶帳號/收據號碼">
+                <input type="hidden" id="orderid" value="<?php echo \think\Request::instance()->get('order'); ?>">
                 <div class="input-group" style="margin-top: 20px;">
-                    <button id="UpdateButton" onclick="$('#Update').submit();" type="button" class="btn btn-primary btn-lg btn-block">提交</button>
+                    <button id="UpdateButton-pay" type="button" class="btn btn-primary btn-lg btn-block">提交</button>
                 </div>
             </form>
         </div>
         <h5 class="text-center" style="margin-top: 20px; color: #FFF;">如不懂如何充值可留意下圖示例</h5>
         <img src="https://db-668.net/html/images/123.jpg" class="img-fluid rounded mx-auto d-block" style="margin-top: 20px;">
     </div>
+
     <script src="/static/index/js/jquery-3.3.1.min.js"></script>
     <script src="/static/index/js/bootstrap.min.js"></script>
     <script src="/static/index/js/less.min.js"></script>
     <script src="/static/admin/plugins/layer/layer.js"></script>
 
 <script>
+  $('#UpdateButton-pay').click(function(){
+      var  order  = $('#orderid').val();
+      var  alipay = $('#alipay').val();
 
+      if(order == '' || order == undefined){
+          layer.msg('参数传递不合法',function(){
+              parent.location.href="<?php echo url('index/index'); ?>";
+          });
+      }
+
+      if(alipay == '' || alipay == undefined){
+          layer.msg('请填写支付寶帳號或收據號碼');
+          return ;
+      }
+
+      var url= "<?php echo url('index/info'); ?>";
+
+      $.post(url,{'order':order,'alipay':alipay},function(ret){
+             if(ret.code == 200){
+                 layer.msg(ret.msg,function(){
+                     parent.location.href="<?php echo url('index/index'); ?>";
+                 })
+             }
+
+          if(ret.code == 400){
+              layer.msg(ret.msg,function(){
+                  parent.location.reload();
+              })
+          }
+
+      },'json')
+  })
 </script>
 
 </body>

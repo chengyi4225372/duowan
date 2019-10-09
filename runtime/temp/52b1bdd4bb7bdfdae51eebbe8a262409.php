@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:109:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/index\view\index\chong.html";i:1570583784;s:99:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\index\view\public\menu.html";i:1570526199;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:109:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/index\view\index\chong.html";i:1570607854;s:99:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\index\view\public\menu.html";i:1570600453;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,25 +23,25 @@
                 <a class="nav-link" href="<?php echo url('index/index'); ?>">增值</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://db-668.net/invoice/history">帳單記錄</a>
+                <a class="nav-link" href="<?php echo url('index/history'); ?>">帳單記錄</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://db-668.net/start">開始遊戲</a>
+                <a class="nav-link" href="<?php echo url('index/index'); ?>">開始遊戲</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://db-668.net/news">最新消息</a>
+                <a class="nav-link" href="<?php echo url('news/index'); ?>">最新消息</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" target="_blank" href="https://api.whatsapp.com/send?phone=85256348549">WhatsApp 查詢</a>
+                <a class="nav-link" target="_blank" href="<?php echo (isset($common['furl']) && ($common['furl'] !== '')?$common['furl']:''); ?>">WhatsApp 查詢</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" target="_blank" href="https://dl3.pushbulletusercontent.com/HYePdIQYFn1LeQsLUGMGXNxWzCWKcfVi/DB-World.mobileconfig">下載多搏世界(IOS)</a>
+                <a class="nav-link" target="_blank" href="<?php echo (isset($common['iurl']) && ($common['iurl'] !== '')?$common['iurl']:''); ?>">下載多搏世界(IOS)</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" target="_blank" href="https://db-668.net/Download/db-668.apk">下載多搏世界(安卓)</a>
+                <a class="nav-link" target="_blank" href="<?php echo (isset($common['aurl']) && ($common['aurl'] !== '')?$common['aurl']:''); ?>">下載多搏世界(安卓)</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" target="_blank" href="https://www.facebook.com/db668/">FB粉絲專頁</a>
+                <a class="nav-link" target="_blank" href="<?php echo (isset($common['furl']) && ($common['furl'] !== '')?$common['furl']:''); ?>">FB粉絲專頁</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo url('login/logout'); ?>">登出</a>
@@ -52,27 +52,27 @@
 <div class="container" style="margin-bottom: 20px;">
 
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-
-        <h2 class="text-center" style="margin-top: 40px; color: #FFF;">便利店充值</h2>
-        <a href="https://db-668.net/invoice/qrcode2/9633" download="QrCode2-9633">
-            <img src="https://db-668.net/invoice/qrcode2/9633" class="img-fluid rounded mx-auto d-block" style="margin-top: 40px;">
+        <h2 class="text-center" style="margin-top: 0px; color: #FFF;">便利店充值</h2>
+        <a href="<?php echo $other['imgs']; ?>" download="<?php echo $other['imgs']; ?>">
+            <img src="<?php echo $other['imgs']; ?>" class="img-fluid rounded mx-auto d-block" style="margin-top: 20px;">
         </a>
 
-        <div class="input-group" style="margin-top: 20px;">
+        <div class="input-group" style="margin-top: -15px;">
             <div class="input-group" style="margin-top: 20px;">
-                <input type="file" accept="image/*" name="Capture" id="Capture" capture="camera" accept=".jpg" style="display: none;">
-                <input type="hidden" name="imgs" value="">
+                <input type="file" accept="image/*" onchange="uploadsImg()" id="Capture" capture="camera" accept=".jpg" style="display: none;">
+                <input type="hidden" id="images" value="">
+                <input type="hidden" id="order" value="<?php echo \think\Request::instance()->get('order'); ?>">
             </div>
 
-            <img onclick="$('#Capture').click();" src="/static/index/images/images.png" class="img-fluid rounded mx-auto d-block" style="margin-top: 20px; width: 60%; max-width: 120px;">
+            <img onclick="$('#Capture').click();" id="imgs" src="/static/index/images/images.png" class="img-fluid rounded mx-auto d-block" style="margin-top: 20px; width: 60%; max-width: 120px;">
 
             <h5 class="text-center" style="margin-top: 20px; color: #FFF;">请先点击圖片上传凭证，在提交</h5>
 
           <div class="input-group" style="margin-top: 20px;">
-              <button id="UpdateButton" onclick="$('#Update').submit();" type="button" class="btn btn-primary btn-lg btn-block">上傳收據</button>
-         </div>
+              <button id="chong"  type="button" class="btn btn-primary btn-lg btn-block">上傳收據</button>
+          </div>
 
-        </div>
+          </div>
         <h5 class="text-center" style="margin-top: 20px; color: #FFF;">如不懂如何充值可留意下圖示例</h5>
         <img src="https://db-668.net/html/images/123.jpg" class="img-fluid rounded mx-auto d-block" style="margin-top: 20px;">
     </div>
@@ -80,7 +80,70 @@
     <script src="/static/index/js/bootstrap.min.js"></script>
     <script src="/static/index/js/less.min.js"></script>
     <script src="/static/admin/plugins/layer/layer.js"></script>
+
     <script>
+
+    function uploadsImg(){
+        var formData =new FormData();
+        formData.append("file",$("#Capture")[0].files[0]);
+        $.ajax({
+            url: "<?php echo url('index/Upimgs'); ?>",
+            type: "post",
+            data: formData,
+            async:false,
+            dataType: 'json',
+            cache: false,
+            processData : false,
+            contentType : false,
+            success: function (ret) {
+                if (ret.code == 200) {
+                    $("#imgs").attr('src', ret.path);
+                    $("#images").val(ret.path);
+                } else {
+                    layer.msg(ret.msg);
+                }
+            },
+
+        });
+        return false;
+    }
+
+
+
+    $('#chong').click(function(){
+        var imgs  = $('#images').val();
+        var order = $('#order').val();
+
+        if(order == '' || order == undefined){
+            layer.msg('传递参数不合法',function(){
+                parent.location.href="<?php echo url('index/index'); ?>";
+            })
+        }
+
+        if(imgs == '' || imgs == undefined){
+            layer.msg('请上传支付凭证！');
+            return ;
+        }
+
+       var url = "<?php echo url('index/chong'); ?>";
+
+      $.post(url,{'order':order,'imgs':imgs},function(ret){
+             if(ret.code == 200){
+                 layer.msg(ret.msg,function(){
+                     parent.location.href="<?php echo url('index/index'); ?>";
+                 })
+             }
+
+          if(ret.code == 400){
+              layer.msg(ret.msg,function(){
+                  parent.location.reload();
+              })
+          }
+
+      },'json')
+
+    })
+
 
     </script>
 

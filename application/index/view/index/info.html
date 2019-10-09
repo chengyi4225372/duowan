@@ -14,14 +14,7 @@
 {include file="public/menu" /}
 
 <div class="container" style="margin-bottom: 20px;">
-     <!--
-    <h3 class="text-center" style="margin-top: 20px; color: #FFF;">GOLD777</h3>
-    <h6 class="text-center" style="margin-top: 20px; color: #FFF;">**請務必核實需要的充值帳號,一經充值成功無法退回!</h6>
-    <h2 class="text-center" style="margin-top: 20px; color: #FFF; ">
-    <h3 class="text-center" style="margin-top: 20px; color: #FFF;">轉數快:55738941</h3>
-    <h6 class="text-center" style="margin-top: 20px; color: #FF0000;">如使用轉數快充值請於最下方填寫付款的英文全名和充值金額</h6>
-    -->
-    <br><br>
+
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
 
         <a href="https://qr.alipay.hk/2810040101z4vqzxexbhrj7y69">
@@ -29,24 +22,56 @@
         </a>
         <br><br>
         <div class="input-group" style="margin-top: 20px;">
-            <form id="Update" action="https://db-668.net/invoice/update" method="post" enctype="multipart/form-data" style="margin: 0 auto 0 auto;">
-                <input type="text" class="form-control" name="Transaction" id="Transaction" placeholder="支付寶帳號/收據號碼">
-                <input type="hidden" name="InvoiceID" value="5954">
+            <form id="Update"  method="post" enctype="multipart/form-data" style="margin: 0 auto 0 auto;">
+                <input type="text" class="form-control" id="alipay" placeholder="支付寶帳號/收據號碼">
+                <input type="hidden" id="orderid" value="{$Think.get.order}">
                 <div class="input-group" style="margin-top: 20px;">
-                    <button id="UpdateButton" onclick="$('#Update').submit();" type="button" class="btn btn-primary btn-lg btn-block">提交</button>
+                    <button id="UpdateButton-pay" type="button" class="btn btn-primary btn-lg btn-block">提交</button>
                 </div>
             </form>
         </div>
         <h5 class="text-center" style="margin-top: 20px; color: #FFF;">如不懂如何充值可留意下圖示例</h5>
         <img src="https://db-668.net/html/images/123.jpg" class="img-fluid rounded mx-auto d-block" style="margin-top: 20px;">
     </div>
+
     <script src="__INDEX__/js/jquery-3.3.1.min.js"></script>
     <script src="__INDEX__/js/bootstrap.min.js"></script>
     <script src="__INDEX__/js/less.min.js"></script>
     <script src="/static/admin/plugins/layer/layer.js"></script>
 
 <script>
+  $('#UpdateButton-pay').click(function(){
+      var  order  = $('#orderid').val();
+      var  alipay = $('#alipay').val();
 
+      if(order == '' || order == undefined){
+          layer.msg('参数传递不合法',function(){
+              parent.location.href="{:url('index/index')}";
+          });
+      }
+
+      if(alipay == '' || alipay == undefined){
+          layer.msg('请填写支付寶帳號或收據號碼');
+          return ;
+      }
+
+      var url= "{:url('index/info')}";
+
+      $.post(url,{'order':order,'alipay':alipay},function(ret){
+             if(ret.code == 200){
+                 layer.msg(ret.msg,function(){
+                     parent.location.href="{:url('index/index')}";
+                 })
+             }
+
+          if(ret.code == 400){
+              layer.msg(ret.msg,function(){
+                  parent.location.reload();
+              })
+          }
+
+      },'json')
+  })
 </script>
 
 </body>

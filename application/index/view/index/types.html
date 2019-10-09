@@ -68,7 +68,7 @@
 
             if(ret.code == 400){
                 layer.msg(ret.msg,function(){
-                    parent.location.reload();
+                    parent.location.href="{:url('index/index')}";
                 })
             }
       },'json')

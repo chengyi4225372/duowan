@@ -14,27 +14,27 @@
 <div class="container" style="margin-bottom: 20px;">
 
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-
-        <h2 class="text-center" style="margin-top: 40px; color: #FFF;">便利店充值</h2>
-        <a href="https://db-668.net/invoice/qrcode2/9633" download="QrCode2-9633">
-            <img src="https://db-668.net/invoice/qrcode2/9633" class="img-fluid rounded mx-auto d-block" style="margin-top: 40px;">
+        <h2 class="text-center" style="margin-top: 0px; color: #FFF;">便利店充值</h2>
+        <a href="{$other.imgs}" download="{$other.imgs}">
+            <img src="{$other.imgs}" class="img-fluid rounded mx-auto d-block" style="margin-top: 20px;">
         </a>
 
-        <div class="input-group" style="margin-top: 20px;">
+        <div class="input-group" style="margin-top: -15px;">
             <div class="input-group" style="margin-top: 20px;">
-                <input type="file" accept="image/*" name="Capture" id="Capture" capture="camera" accept=".jpg" style="display: none;">
-                <input type="hidden" name="imgs" value="">
+                <input type="file" accept="image/*" onchange="uploadsImg()" id="Capture" capture="camera" accept=".jpg" style="display: none;">
+                <input type="hidden" id="images" value="">
+                <input type="hidden" id="order" value="{$Think.get.order}">
             </div>
 
-            <img onclick="$('#Capture').click();" src="__INDEX__/images/images.png" class="img-fluid rounded mx-auto d-block" style="margin-top: 20px; width: 60%; max-width: 120px;">
+            <img onclick="$('#Capture').click();" id="imgs" src="__INDEX__/images/images.png" class="img-fluid rounded mx-auto d-block" style="margin-top: 20px; width: 60%; max-width: 120px;">
 
             <h5 class="text-center" style="margin-top: 20px; color: #FFF;">请先点击圖片上传凭证，在提交</h5>
 
           <div class="input-group" style="margin-top: 20px;">
-              <button id="UpdateButton" onclick="$('#Update').submit();" type="button" class="btn btn-primary btn-lg btn-block">上傳收據</button>
-         </div>
+              <button id="chong"  type="button" class="btn btn-primary btn-lg btn-block">上傳收據</button>
+          </div>
 
-        </div>
+          </div>
         <h5 class="text-center" style="margin-top: 20px; color: #FFF;">如不懂如何充值可留意下圖示例</h5>
         <img src="https://db-668.net/html/images/123.jpg" class="img-fluid rounded mx-auto d-block" style="margin-top: 20px;">
     </div>
@@ -42,7 +42,70 @@
     <script src="__INDEX__/js/bootstrap.min.js"></script>
     <script src="__INDEX__/js/less.min.js"></script>
     <script src="/static/admin/plugins/layer/layer.js"></script>
+
     <script>
+
+    function uploadsImg(){
+        var formData =new FormData();
+        formData.append("file",$("#Capture")[0].files[0]);
+        $.ajax({
+            url: "{:url('index/Upimgs')}",
+            type: "post",
+            data: formData,
+            async:false,
+            dataType: 'json',
+            cache: false,
+            processData : false,
+            contentType : false,
+            success: function (ret) {
+                if (ret.code == 200) {
+                    $("#imgs").attr('src', ret.path);
+                    $("#images").val(ret.path);
+                } else {
+                    layer.msg(ret.msg);
+                }
+            },
+
+        });
+        return false;
+    }
+
+
+
+    $('#chong').click(function(){
+        var imgs  = $('#images').val();
+        var order = $('#order').val();
+
+        if(order == '' || order == undefined){
+            layer.msg('传递参数不合法',function(){
+                parent.location.href="{:url('index/index')}";
+            })
+        }
+
+        if(imgs == '' || imgs == undefined){
+            layer.msg('请上传支付凭证！');
+            return ;
+        }
+
+       var url = "{:url('index/chong')}";
+
+      $.post(url,{'order':order,'imgs':imgs},function(ret){
+             if(ret.code == 200){
+                 layer.msg(ret.msg,function(){
+                     parent.location.href="{:url('index/index')}";
+                 })
+             }
+
+          if(ret.code == 400){
+              layer.msg(ret.msg,function(){
+                  parent.location.reload();
+              })
+          }
+
+      },'json')
+
+    })
+
 
     </script>
 

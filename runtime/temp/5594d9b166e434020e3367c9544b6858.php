@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:109:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/index\view\index\types.html";i:1570583009;s:99:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\index\view\public\menu.html";i:1570600453;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:109:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/index\view\index\types.html";i:1570603333;s:99:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\index\view\public\menu.html";i:1570600453;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -106,7 +106,7 @@
 
             if(ret.code == 400){
                 layer.msg(ret.msg,function(){
-                    parent.location.reload();
+                    parent.location.href="<?php echo url('index/index'); ?>";
                 })
             }
       },'json')
