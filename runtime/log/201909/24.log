@@ -1,0 +1,78 @@
+---------------------------------------------------------------
+[ 2019-09-24T08:34:38+08:00 ] 127.0.0.1 GET /index/index/index
+[ info ] local.duowan.com/index/index/index [运行时间：0.052003s][吞吐率：19.23req/s] [内存消耗：2,077.83kb] [文件加载：55]
+[ info ] [ LANG ] C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; Hm_lvt_d740981d25ee4b445e195a1e4a37630b=1569225875; _ga=GA1.2.1806251321.1569225876; _gid=GA1.2.2100801223.1569225876; PHPSESSID=qli1c0utki5p311977n3iuhlj6; Hm_lpvt_d740981d25ee4b445e195a1e4a37630b=1569226126',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => 'local.duowan.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\Index->index[ C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\index\controller\Index.php ]
+[ info ] [ VIEW ] C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/index\view\index\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-09-24T08:34:38+08:00 ] 127.0.0.1 GET /static/index/css/bootstrap.min.css.map
+[ info ] local.duowan.com/static/index/css/bootstrap.min.css.map [运行时间：0.051003s][吞吐率：19.61req/s] [内存消耗：1,751.09kb] [文件加载：48]
+[ info ] [ LANG ] C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'static',
+    1 => 'index',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_d740981d25ee4b445e195a1e4a37630b=1569225875; _ga=GA1.2.1806251321.1569225876; _gid=GA1.2.2100801223.1569225876; PHPSESSID=qli1c0utki5p311977n3iuhlj6; Hm_lpvt_d740981d25ee4b445e195a1e4a37630b=1569226126',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'connection' => 'close',
+  'host' => 'local.duowan.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-09-24T08:34:38+08:00 ] 127.0.0.1 GET /static/index/js/bootstrap.min.js.map
+[ info ] local.duowan.com/static/index/js/bootstrap.min.js.map [运行时间：0.048003s][吞吐率：20.83req/s] [内存消耗：1,751.08kb] [文件加载：48]
+[ info ] [ LANG ] C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'static',
+    1 => 'index',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_d740981d25ee4b445e195a1e4a37630b=1569225875; _ga=GA1.2.1806251321.1569225876; _gid=GA1.2.2100801223.1569225876; PHPSESSID=qli1c0utki5p311977n3iuhlj6; Hm_lpvt_d740981d25ee4b445e195a1e4a37630b=1569226126',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'connection' => 'close',
+  'host' => 'local.duowan.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File

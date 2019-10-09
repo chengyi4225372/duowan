@@ -55,10 +55,10 @@
       $.post(url,{'pid':pid,'order':order},function(ret){
             if(ret.code == 200){
                 if(ret.pid ==1){
-                    window.location.href="";
+                    window.location.href="{:url('index/zhuan')}?order="+order;
                 }
                 if(ret.pid == 2){
-                    window.location.href="{:url('index/chong')}?order="+order;;
+                    window.location.href="{:url('index/chong')}?order="+order;
                 }
 
                 if(ret.pid == 3){

@@ -18,28 +18,25 @@
     <h6 class="text-center" style="margin-top: 20px; color: #FFF;">**請務必核實需要的充值帳號,一經充值成功無法退回!</h6>
     <h2 class="text-center" style="margin-top: 20px; color: #FFF;">
 
-   <br><br>
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-
-        <a href="https://qr.alipay.hk/2810040101z4vqzxexbhrj7y69">
-            <img src="https://db-668.net/html/images/transfor.png" class="img-fluid rounded mx-auto d-block" style="margin-top: 20px;">
-        </a>
-
-
-        <br><br>
-        <h2 class="text-center" style="margin-top: 40px; color: #FFF;">便利店充值</h2>
-        <a href="https://db-668.net/invoice/qrcode2/5954" download="QrCode2-5954">
-            <img src="https://db-668.net/invoice/qrcode2/5954" class="img-fluid rounded mx-auto d-block" style="margin-top: 40px;">
-        </a>
-        <br><br>
         <div class="input-group" style="margin-top: 20px;">
-            <form id="Update" action="https://db-668.net/invoice/update" method="post" enctype="multipart/form-data" style="margin: 0 auto 0 auto;">
-                <input type="text" class="form-control" name="Transaction" id="Transaction" placeholder="支付寶帳號/收據號碼">
-                <input type="hidden" name="InvoiceID" value="5954">
+                <input type="file" accept="image/*" name="Capture" id="Capture" capture="camera" accept=".jpg" style="display: none;">
+                <input type="hidden" name="imgs" value="">
+        </div>
+
+        <img onclick="$('#Capture').click();" src="__INDEX__/images/images.png" class="img-fluid rounded mx-auto d-block" style="margin-top: 20px; width: 60%; max-width: 120px;">
+
+        <h5 class="text-center" style="margin-top: 20px; color: #FFF;">请先点击圖片上传凭证，在提交</h5>
+   <br>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="input-group" style="margin-top: 20px;">
+
+                <input type="text" class="form-control" name="Transaction" id="Transaction" placeholder="請輸入你的轉帳名字">
+                <input type="hidden" name="orderid" value="{$Think.get.order}">
                 <div class="input-group" style="margin-top: 20px;">
-                    <button id="UpdateButton" onclick="$('#Update').submit();" type="button" class="btn btn-primary btn-lg btn-block">提交</button>
+                    <button id="UpdateButton"  type="button" class="btn btn-primary btn-lg btn-block">上傳收據</button>
                 </div>
-            </form>
+
         </div>
         <h5 class="text-center" style="margin-top: 20px; color: #FFF;">如不懂如何充值可留意下圖示例</h5>
         <img src="https://db-668.net/html/images/123.jpg" class="img-fluid rounded mx-auto d-block" style="margin-top: 20px;">
@@ -50,6 +47,10 @@
     <script src="/static/admin/plugins/layer/layer.js"></script>
     <script>
 
+
+     $('#UpdateButton').click(function(){
+
+     })
     </script>
 
 </body>
