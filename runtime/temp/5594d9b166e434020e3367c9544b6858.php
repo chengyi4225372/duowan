@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:109:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/index\view\index\types.html";i:1570528111;s:99:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\index\view\public\menu.html";i:1570526199;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:109:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/index\view\index\types.html";i:1570583009;s:99:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\index\view\public\menu.html";i:1570526199;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -93,10 +93,10 @@
       $.post(url,{'pid':pid,'order':order},function(ret){
             if(ret.code == 200){
                 if(ret.pid ==1){
-                    window.location.href="";
+                    window.location.href="<?php echo url('index/zhuan'); ?>?order="+order;
                 }
                 if(ret.pid == 2){
-                    window.location.href="<?php echo url('index/chong'); ?>?order="+order;;
+                    window.location.href="<?php echo url('index/chong'); ?>?order="+order;
                 }
 
                 if(ret.pid == 3){

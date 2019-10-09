@@ -1,0 +1,112 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+
+            <form id="dataForm" class="form-horizontal dataForm" action="" method="post" enctype="multipart/form-data">
+                <div class="box-body">
+                    <div class="fields-group">
+                        {if isset($info)}
+                        <input id="mid"  value="{$info.id}" hidden placeholder="请勿修改">
+                        {/if}
+
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">WhatsApp 查詢</label>
+                            <div class="col-sm-10 col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input  id="wurl" name="wurl" value="{$info.wurl|default=''}" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">多搏世界(IOS)</label>
+                            <div class="col-sm-10 col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa  fa-eye-slash"></i></span>
+                                    <input  type="text" id="iurl" value="{$info.iurl|default=''}" class="form-control" >
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">多搏世界(安卓)</label>
+                            <div class="col-sm-10 col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa  fa-eye-slash"></i></span>
+                                    <input  type="text" id="aurl" value="{$info.aurl|default=''}" class="form-control" >
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject" class="col-sm-2 control-label">FB粉絲專頁</label>
+                            <div class="col-sm-10 col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-file-text"></i></span>
+                                    <input  type="text" id="furl" value="{$info.furl|default=''}" class="form-control" >
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+                <div class="box-footer">
+
+                    <div class="col-sm-2">
+                    </div>
+                    <div class="col-sm-10 col-md-4">
+                        <div class="btn-group">
+                            <button type="button" class="btn flat btn-info dataform-submit add-url">
+                                保存
+                            </button>
+                        </div>
+
+                        <div class="btn-group">
+                            <button type="reset" class="btn flat btn-default dataform-reset">
+                                重置
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('.add-url').click(function(){
+        var data = {};
+
+        data.iurl = $('#iurl').val();
+        data.aurl = $('#aurl').val();
+        data.furl = $('#furl').val();
+        data.wurl = $('#wurl').val();
+        data.mid  = $('#mid').val();
+
+        var url = "{:url('other/addurl')}";
+
+        $.post(url,data,function(ret){
+           if(ret.code == 200){
+               layer.msg(ret.msg,function(){
+                   parent.location.reload();
+               })
+           }
+
+            if(ret.code == 400){
+                layer.msg(ret.msg,function(){
+                    parent.location.reload();
+                })
+            }
+
+
+        },'json')
+    })
+</script>
