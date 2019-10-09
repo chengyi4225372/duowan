@@ -109,7 +109,6 @@ class Index  extends  Base {
 
     //账单记录
     public function history(){
-
         return $this->fetch();
     }
 

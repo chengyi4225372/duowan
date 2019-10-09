@@ -33,6 +33,7 @@ class Login  extends  Base {
                return json(['code'=>401,'msg'=>'該用戶已被凍結']);
            }
 
+           Db::name('users')->where('id',$res['id'])->update(['last_login_time'=>time()]);
            Session::set('member',['id'=>$res['id'],'name'=>$res['name']]);
            return json(['code'=>200,'msg'=>'登入成功']);
         }
@@ -43,8 +44,5 @@ class Login  extends  Base {
         Session::delete('member');
         $this->redirect('login/login');
     }
-
-
-
 
 }

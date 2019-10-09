@@ -1,0 +1,150 @@
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+
+            <form id="dataForm" class="form-horizontal dataForm" action="" method="post" enctype="multipart/form-data">
+                <div class="box-body">
+                    <div class="fields-group">
+                        {if isset($info)}
+                        <input id="mid"  value="{$info.id}" hidden placeholder="请勿修改">
+                        {/if}
+
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">轉數快</label>
+                            <div class="col-sm-10 col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input  id="text" name="text" value="{$info.text|default=''}" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="purl" class="col-sm-2 control-label">好友轉帳链接</label>
+                            <div class="col-sm-10 col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa  fa-eye-slash"></i></span>
+                                    <input  type="text" id="purl" value="{$info.purl|default=''}" class="form-control" >
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="avatar" class="col-sm-2 control-label">7-11便利店充值碼</label>
+                            <div class="form-group">
+                                <div class="col-sm-8">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-file-archive-o"></i></span>
+                                        <input  type="file" name="file" id="file" class="form-control" onchange="upload_file()" >
+                                    </div>
+                                    <div class="input-group file-caption-main">
+                                        <img id="img" src="{$info.imgs|default='/static/index/images/images.png'}" style="max-width: 200px;max-height: 200px">
+                                        <input type="hidden" value="" id="images">
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="box-footer">
+
+                    <div class="col-sm-2">
+                    </div>
+                    <div class="col-sm-10 col-md-4">
+                        <div class="btn-group">
+                            <button type="button" class="btn flat btn-info dataform-submit add-other">
+                              保存
+                            </button>
+                        </div>
+
+                        <div class="btn-group">
+                            <button type="reset" class="btn flat btn-default dataform-reset">
+                                重置
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function upload_file() {
+        var formData =new FormData();
+        formData.append("file",$("#file")[0].files[0]);
+        $.ajax({
+            url: "{:url('deng/UploadImg')}",
+            type: "post",
+            data: formData,
+            async:false,
+            dataType: 'json',
+            cache: false,
+            processData : false,
+            contentType : false,
+            success: function (ret) {
+                if (ret.code == 200) {
+                    $("#img").attr('src', ret.path);
+                    $("#images").val(ret.path);
+                } else {
+                    layer.msg(ret.msg);
+                }
+            },
+
+        });
+        return false;
+    }
+
+
+    $('.add-other').click(function(){
+         var data = {};
+         data.purl = $('#purl').val();
+         data.imgs = $('#images').val();
+         data.mid  = $('#mid').val();
+         data.text = $('#text').val();
+
+         var url = "{:url('other/add')}";
+
+         if(data.text == '' || data.text == undefined){
+             layer.msg('请填写轉數快');
+             return ;
+         }
+
+         if(data.purl == '' || data.purl == undefined){
+             layer.msg('请填写转账url');
+             return;
+         }
+
+         if(data.imgs == '' || data.imgs == undefined){
+             layer.msg('请上传图片');
+             return ;
+         }
+
+         $.post(url,data,function(ret){
+              if(ret.code == 200){
+                  layer.msg(ret.msg,function(){
+                      parent.location.reload();
+                  })
+              }
+
+             if(ret.code == 400){
+                 layer.msg(ret.msg,function(){
+                     parent.location.reload();
+                 })
+             }
+
+         },'json')
+
+    })
+</script>
