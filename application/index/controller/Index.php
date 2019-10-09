@@ -129,7 +129,21 @@ class Index  extends  Base {
         }
 
         if($this->request->isPost()){
+            $order = input('post.order','','int');
+            $imgs  = input('post.imgs','','trim');
+            $names = input('post.names','','trim');
 
+            if(empty($order) || !isset($order)){
+                return false;
+            }
+
+            $ret = Db::name('order')->where(['id'=>$order])->update(['imgs'=>$imgs,'names'=>$names]);
+
+            if($ret){
+                return json(['code'=>200,'msg'=>'操作成功']);
+            }else{
+                return json(['code'=>400,'msg'=>'操作失败']);
+            }
         }
     }
 

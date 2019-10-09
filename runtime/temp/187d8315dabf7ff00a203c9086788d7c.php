@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:109:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/index\view\index\zhuan.html";i:1570583309;s:99:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\index\view\public\menu.html";i:1570600453;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:109:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/index\view\index\zhuan.html";i:1570610174;s:99:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\index\view\public\menu.html";i:1570600453;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,23 +56,24 @@
     <h6 class="text-center" style="margin-top: 20px; color: #FFF;">**請務必核實需要的充值帳號,一經充值成功無法退回!</h6>
     <h2 class="text-center" style="margin-top: 20px; color: #FFF;">
 
-        <div class="input-group" style="margin-top: 20px;">
-                <input type="file" accept="image/*" name="Capture" id="Capture" capture="camera" accept=".jpg" style="display: none;">
-                <input type="hidden" name="imgs" value="">
+        <div class="input-group" style="margin-top: 0px;">
+                <input type="file" accept="image/*" onchange="UploadsImgs()" id="Capture" capture="camera" accept=".jpg" style="display: none;">
+                <input type="hidden" id="imgs" value="">
+                <input type="hidden" id="order" value="<?php echo \think\Request::instance()->get('order'); ?>">
         </div>
 
-        <img onclick="$('#Capture').click();" src="/static/index/images/images.png" class="img-fluid rounded mx-auto d-block" style="margin-top: 20px; width: 60%; max-width: 120px;">
+        <img onclick="$('#Capture').click();" id="images" src="/static/index/images/images.png" class="img-fluid rounded mx-auto d-block" style="margin-top: 20px; width: 60%; max-width: 120px;">
 
         <h5 class="text-center" style="margin-top: 20px; color: #FFF;">请先点击圖片上传凭证，在提交</h5>
    <br>
 
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-        <div class="input-group" style="margin-top: 20px;">
+        <div class="input-group" style="">
 
-                <input type="text" class="form-control" name="Transaction" id="Transaction" placeholder="請輸入你的轉帳名字">
+                <input type="text" class="form-control"  id="names" placeholder="請輸入你的轉帳名字">
                 <input type="hidden" name="orderid" value="<?php echo \think\Request::instance()->get('order'); ?>">
                 <div class="input-group" style="margin-top: 20px;">
-                    <button id="UpdateButton"  type="button" class="btn btn-primary btn-lg btn-block">上傳收據</button>
+                    <button id="zhuan"  type="button" class="btn btn-primary btn-lg btn-block">上傳收據</button>
                 </div>
 
         </div>
@@ -85,9 +86,67 @@
     <script src="/static/admin/plugins/layer/layer.js"></script>
     <script>
 
+     function UploadsImgs(){
+         var formData =new FormData();
+         formData.append("file",$("#Capture")[0].files[0]);
+         $.ajax({
+             url: "<?php echo url('index/Upimgs'); ?>",
+             type: "post",
+             data: formData,
+             async:false,
+             dataType: 'json',
+             cache: false,
+             processData : false,
+             contentType : false,
+             success: function (ret) {
+                 if (ret.code == 200) {
+                     $("#images").attr('src', ret.path);
+                     $("#imgs").val(ret.path);
+                 } else {
+                     layer.msg(ret.msg);
+                 }
+             },
 
-     $('#UpdateButton').click(function(){
+         });
+         return false;
+     }
 
+     $('#zhuan').click(function(){
+         var  names = $('#names').val();
+         var  imgs  = $('#imgs').val();
+         var order  = $('#order').val();
+
+         if(names =='' || names == undefined){
+             layer.msg('请填写你的轉帳名字');
+             return ;
+         }
+
+         if(imgs =='' || imgs == undefined){
+             layer.msg('请上传图片');
+             return ;
+         }
+
+         if(order =='' || order == undefined){
+             layer.msg('参数传递不合法',function(){
+                 parent.location.href="<?php echo url('index/index'); ?>";
+             });
+         }
+
+         var  url = "<?php echo url('index/zhuan'); ?>";
+
+         $.post(url,{'order':order,'imgs':imgs,'names':names},function(ret){
+               if(ret.code == 200){
+                   layer.msg(ret.msg,function(){
+                       parent.location.href ="<?php echo url('index/index'); ?>";
+                   })
+               }
+
+               if(ret.code == 400){
+                   layer.msg(ret.msg,function(){
+                       parent.location.reload();
+                   })
+               }
+         },'json')
      })
     </script>
 
