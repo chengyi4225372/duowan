@@ -261,7 +261,7 @@ return [
 
     'sys_log' => [
         'env'  => 'dev',//开发环境
-        'path' => ROOT_PATH . 'runtime/errorlog/' . date("Y-m-d") . '.log',
+        //'path' => ROOT_PATH . 'runtime/errorlog/' . date("Y-m-d") . '.log',
     ],
 
 

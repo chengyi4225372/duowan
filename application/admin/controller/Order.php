@@ -14,11 +14,15 @@ class Order extends Base
 
         if($this->request->isGet()){
           $list = Db::name($this->dataform)->where('status',0)->paginate(15);
+          $play = Db::name('play_cates')->field('id,title')->order('id desc')->select();
+          $user = Db::name('users')->field('id,name')->select();
+          $play = array_column($play,'title','id');
+          $users = array_column($user,'name','id');
           $this->assign('list',$list);
+          $this->assign('play',$play);
+          $this->assign('users',$users);
           return $this->fetch();
         }
-
-
 
     }
 
@@ -26,6 +30,8 @@ class Order extends Base
 
     public function edit(){
         if($this->request->isGet()){
+            $id = input('get.id','','int');
+            $pid= input('get.pid','','int');
 
             return $this->fetch();
         }
@@ -35,7 +41,13 @@ class Order extends Base
     public function over(){
         if($this->request->isGet()){
             $list = Db::name($this->dataform)->where('status',1)->paginate(15);
+            $play = Db::name('play_cates')->field('id,title')->order('id desc')->select();
+            $user = Db::name('users')->field('id,name')->select();
+            $play = array_column($play,'title','id');
+            $users = array_column($user,'name','id');
             $this->assign('list',$list);
+            $this->assign('play',$play);
+            $this->assign('users',$users);
             return $this->fetch();
         }
     }
@@ -45,8 +57,13 @@ class Order extends Base
     public function nomal(){
         if($this->request->isGet()){
             $list = Db::name($this->dataform)->where('status',-1)->paginate(15);
+            $play = Db::name('play_cates')->field('id,title')->order('id desc')->select();
+            $user = Db::name('users')->field('id,name')->select();
+            $play = array_column($play,'title','id');
+            $users = array_column($user,'name','id');
             $this->assign('list',$list);
-            return $this->fetch();
+            $this->assign('play',$play);
+            $this->assign('users',$users);
         }
     }
 
