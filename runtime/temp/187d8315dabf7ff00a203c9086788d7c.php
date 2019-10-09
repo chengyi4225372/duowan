@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:109:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/index\view\index\zhuan.html";i:1570610174;s:99:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\index\view\public\menu.html";i:1570600453;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:109:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/index\view\index\zhuan.html";i:1570610914;s:99:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\index\view\public\menu.html";i:1570600453;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,7 +52,7 @@
 
 <div class="container" style="margin-bottom: 20px;">
 
-    <h3 class="text-center" style="margin-top: 20px; color: #FFF;">轉數快:55738941</h3>
+    <h3 class="text-center" style="margin-top: 20px; color: #FFF;"><?php echo (isset($other['text']) && ($other['text'] !== '')?$other['text']:''); ?></h3>
     <h6 class="text-center" style="margin-top: 20px; color: #FFF;">**請務必核實需要的充值帳號,一經充值成功無法退回!</h6>
     <h2 class="text-center" style="margin-top: 20px; color: #FFF;">
 

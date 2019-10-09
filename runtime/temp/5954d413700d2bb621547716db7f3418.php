@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:111:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/index\view\index\history.html";i:1570584682;s:99:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\index\view\public\menu.html";i:1570600453;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:111:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/index\view\index\history.html";i:1570612605;s:99:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\index\view\public\menu.html";i:1570600453;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,72 +59,44 @@
     </tr>
     </thead>
     <tbody>
-    <tr onclick="window.location.href='https://db-668.net/invoice/information/9633'">
-        <th scope="row">9633</th>
-        <td>2019-10-08 17:51:45</td>
-        <td>未付款</td>
+    <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+    <tr onclick="window.location.href='<?php echo url('index/checkorder',array('id'=>$vo['id'])); ?>'">
+        <th scope="row"><?php echo $vo['id']; ?></th>
+        <td><?php echo date('Y-m-d,h:i:s',$vo['create_time']); ?></td>
+        <td>
+            <?php if($vo['status'] == 0): ?>
+              未確認
+            <?php elseif($vo['status'] == 1): ?>
+              已確認
+            <?php else: ?>
+              已取消
+            <?php endif; ?>
+        </td>
     </tr>
-    <tr onclick="window.location.href='https://db-668.net/invoice/information/9617'">
-        <th scope="row">9617</th>
-        <td>2019-10-08 17:11:08</td>
-        <td>已取消</td>
-    </tr>
-    <tr onclick="window.location.href='https://db-668.net/invoice/information/9601'">
-        <th scope="row">9601</th>
-        <td>2019-10-08 16:28:54</td>
-        <td>未付款</td>
-    </tr>
-    <tr onclick="window.location.href='https://db-668.net/invoice/information/9011'">
-        <th scope="row">9011</th>
-        <td>2019-10-06 19:55:01</td>
-        <td>未付款</td>
-    </tr>
-    <tr onclick="window.location.href='https://db-668.net/invoice/information/6993'">
-        <th scope="row">6993</th>
-        <td>2019-09-29 20:01:16</td>
-        <td>未付款</td>
-    </tr>
-    <tr onclick="window.location.href='https://db-668.net/invoice/information/6957'">
-        <th scope="row">6957</th>
-        <td>2019-09-29 16:49:41</td>
-        <td>未付款</td>
-    </tr>
-    <tr onclick="window.location.href='https://db-668.net/invoice/information/6955'">
-        <th scope="row">6955</th>
-        <td>2019-09-29 16:43:30</td>
-        <td>未付款</td>
-    </tr>
-    <tr onclick="window.location.href='https://db-668.net/invoice/information/5954'">
-        <th scope="row">5954</th>
-        <td>2019-09-26 10:14:41</td>
-        <td>未付款</td>
-    </tr>
-    <tr onclick="window.location.href='https://db-668.net/invoice/information/5334'">
-        <th scope="row">5334</th>
-        <td>2019-09-24 08:06:50</td>
-        <td>未付款</td>
-    </tr>
-    <tr onclick="window.location.href='https://db-668.net/invoice/information/5144'">
-        <th scope="row">5144</th>
-        <td>2019-09-23 18:23:27</td>
-        <td>未付款</td>
-    </tr>
+    <?php endforeach; endif; else: echo "" ;endif; ?>
+
     </tbody>
 </table>
+
 <nav aria-label="Page navigation">
+
+
     <ul class="pagination justify-content-center">
-        <li class="page-item disabled"><a class="page-link">1</a></li>
-        <li class="page-item"><a class="page-link" href="https://db-668.net/invoice/history?page=2">2</a></li>
-        <li class="page-item"><a class="page-link" href="https://db-668.net/invoice/history?page=3">3</a></li>
-        <li class="page-item"><a class="page-link" href="https://db-668.net/invoice/history?page=4">4</a></li>
-        <li class="page-item"><a class="page-link" href="https://db-668.net/invoice/history?page=25">&raquo;</a></li>
+
+     <li class="page-item disabled"><a class="page-link">1</a></li>
+     <li class="page-item"><a class="page-link" href="https://db-668.net/invoice/history?page=2">2</a></li>
+     <li class="page-item"><a class="page-link" href="https://db-668.net/invoice/history?page=3">3</a></li>
+     <li class="page-item"><a class="page-link" href="https://db-668.net/invoice/history?page=4">4</a></li>
+     <li class="page-item"><a class="page-link" href="https://db-668.net/invoice/history?page=25">&raquo;</a></li>
+
     </ul>
+
 </nav>
 
 <script src="/static/index/js/jquery-3.3.1.min.js"></script>
-<script src="/static/index/js/js/bootstrap.min.js"></script>
+<script src="/static/index/js/bootstrap.min.js"></script>
 <script src="/static/index/js/less.min.js"></script>
-<script src="/static/plugins/layer/layer.js"></script>
+<script src="/static/admin/plugins/layer/layer.js"></script>
 
 <script>
 

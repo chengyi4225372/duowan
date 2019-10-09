@@ -3,6 +3,7 @@ namespace  app\index\controller;
 
 use app\index\controller\Base;
 use think\Db;
+use think\Session;
 
 class Index  extends  Base {
 
@@ -150,9 +151,16 @@ class Index  extends  Base {
 
     //账单记录
     public function history(){
+        $mid  = Session::get('member.id');
+        $list = Db::name($this->order)->where(['mid'=>$mid])->order('id desc')->paginate(5);
+        $this->assign('list',$list);
         return $this->fetch();
     }
 
+
+    public function check_order(){
+
+    }
 
 
     public function Upimgs(){

@@ -21,74 +21,54 @@
     </tr>
     </thead>
     <tbody>
-    <tr onclick="window.location.href='https://db-668.net/invoice/information/9633'">
-        <th scope="row">9633</th>
-        <td>2019-10-08 17:51:45</td>
-        <td>未付款</td>
+    {volist name='list' id='vo'}
+    <tr onclick="show_url('{$vo.id}')">
+        <th scope="row">{$vo.id}</th>
+        <td>{$vo.create_time|date='Y-m-d,h:i:s',###}</td>
+        <td>
+            {if condition="$vo.status eq 0"}
+              未確認
+            {elseif condition="$vo.status eq 1" /}
+              已確認
+            {else /}
+              已取消
+            {/if}
+        </td>
     </tr>
-    <tr onclick="window.location.href='https://db-668.net/invoice/information/9617'">
-        <th scope="row">9617</th>
-        <td>2019-10-08 17:11:08</td>
-        <td>已取消</td>
-    </tr>
-    <tr onclick="window.location.href='https://db-668.net/invoice/information/9601'">
-        <th scope="row">9601</th>
-        <td>2019-10-08 16:28:54</td>
-        <td>未付款</td>
-    </tr>
-    <tr onclick="window.location.href='https://db-668.net/invoice/information/9011'">
-        <th scope="row">9011</th>
-        <td>2019-10-06 19:55:01</td>
-        <td>未付款</td>
-    </tr>
-    <tr onclick="window.location.href='https://db-668.net/invoice/information/6993'">
-        <th scope="row">6993</th>
-        <td>2019-09-29 20:01:16</td>
-        <td>未付款</td>
-    </tr>
-    <tr onclick="window.location.href='https://db-668.net/invoice/information/6957'">
-        <th scope="row">6957</th>
-        <td>2019-09-29 16:49:41</td>
-        <td>未付款</td>
-    </tr>
-    <tr onclick="window.location.href='https://db-668.net/invoice/information/6955'">
-        <th scope="row">6955</th>
-        <td>2019-09-29 16:43:30</td>
-        <td>未付款</td>
-    </tr>
-    <tr onclick="window.location.href='https://db-668.net/invoice/information/5954'">
-        <th scope="row">5954</th>
-        <td>2019-09-26 10:14:41</td>
-        <td>未付款</td>
-    </tr>
-    <tr onclick="window.location.href='https://db-668.net/invoice/information/5334'">
-        <th scope="row">5334</th>
-        <td>2019-09-24 08:06:50</td>
-        <td>未付款</td>
-    </tr>
-    <tr onclick="window.location.href='https://db-668.net/invoice/information/5144'">
-        <th scope="row">5144</th>
-        <td>2019-09-23 18:23:27</td>
-        <td>未付款</td>
-    </tr>
+    {/volist}
+
     </tbody>
 </table>
+
 <nav aria-label="Page navigation">
+
+
     <ul class="pagination justify-content-center">
-        <li class="page-item disabled"><a class="page-link">1</a></li>
-        <li class="page-item"><a class="page-link" href="https://db-668.net/invoice/history?page=2">2</a></li>
-        <li class="page-item"><a class="page-link" href="https://db-668.net/invoice/history?page=3">3</a></li>
-        <li class="page-item"><a class="page-link" href="https://db-668.net/invoice/history?page=4">4</a></li>
-        <li class="page-item"><a class="page-link" href="https://db-668.net/invoice/history?page=25">&raquo;</a></li>
+
+     <li class="page-item disabled"><a class="page-link">1</a></li>
+     <li class="page-item"><a class="page-link" href="https://db-668.net/invoice/history?page=2">2</a></li>
+     <li class="page-item"><a class="page-link" href="https://db-668.net/invoice/history?page=3">3</a></li>
+     <li class="page-item"><a class="page-link" href="https://db-668.net/invoice/history?page=4">4</a></li>
+     <li class="page-item"><a class="page-link" href="https://db-668.net/invoice/history?page=25">&raquo;</a></li>
+
     </ul>
+
 </nav>
 
 <script src="__INDEX__/js/jquery-3.3.1.min.js"></script>
-<script src="__INDEX__/js/js/bootstrap.min.js"></script>
+<script src="__INDEX__/js/bootstrap.min.js"></script>
 <script src="__INDEX__/js/less.min.js"></script>
-<script src="__STATIC__/plugins/layer/layer.js"></script>
+<script src="/static/admin/plugins/layer/layer.js"></script>
 
 <script>
+function show_url(id){
+    var url = "{:url('index/check_order')}";
+
+    $.get(url,{'id':id},function(ret){
+
+    },'json')
+}
+
 
 </script>
 </body>
