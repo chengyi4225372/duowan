@@ -23,7 +23,7 @@ class Index  extends  Base {
 
 
     //1 选择页面
-    public  function index(){
+     public  function index(){
          if($this->request->isGet()){
              $cates = Db::name($this->play)->order('id desc')->select();
              $this->assign('cates',$cates);
@@ -179,6 +179,7 @@ class Index  extends  Base {
             return json(['code'=>'400','msg'=>$mes]);
         }
     }
+
 
 
 }
