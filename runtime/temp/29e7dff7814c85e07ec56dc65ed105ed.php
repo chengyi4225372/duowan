@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:108:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/admin\view\order\over.html";i:1570613679;s:103:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\admin\view\template\layout.html";i:1569227915;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:108:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/admin\view\order\over.html";i:1570700012;s:103:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\admin\view\template\layout.html";i:1569227915;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -145,6 +145,7 @@
                         <th>游戏类型</th>
                         <th>用户</th>
                         <th>充值类型</th>
+                        <th>订单状态</th>
                         <th>创建时间</th>
                         <th>操作</th>
                     </tr>
@@ -154,12 +155,30 @@
                     <tr>
                         <td><?php echo $vo['id']; ?></td>
                         <td><?php echo $vo['orderId']; ?></td>
-                        <td><?php echo $vo['mid']; ?></td>
-                        <td><?php echo $vo['cid']; ?></td>
+                        <td><?php echo $play[$vo['cid']]; ?></td>
+                        <td><?php echo $users[$vo['mid']]; ?></td>
+                        <td>
+                            <?php if($vo['pid'] == 1): ?>
+                            轉數塊
+                            <?php elseif($vo['pid'] == 2): ?>
+                            7-11充值
+                            <?php else: ?>
+                            好友轉賬
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <?php if($vo['status'] == 0): ?>
+                            <a class="btn btn-block btn-social btn-github  btn-xs">未確認</a>
+                            <?php elseif($vo['status'] == 1): ?>
+                            <a class="btn btn-block btn-social btn-flickr btn-xs">已確認</a>
+                            <?php else: ?>
+                            <a class="btn btn-block btn-social btn-dropbox btn-xs">已取消</a>
+                            <?php endif; ?>
+                        </td>
                         <td><?php echo date('Y-m-d h:i',$vo['create_time']); ?></td>
 
                         <td class="td-do">
-                            <a data-href="<?php echo url('order/edit',array('id'=>$vo['id'])); ?>"
+                            <a data-href="<?php echo url('order/edit',array('id'=>$vo['id'],'pid'=>$vo['pid'])); ?>"
                                class="btn btn-primary btn-xs edit" title="修改">
                                 <i class="fa fa-pencil"></i>
                             </a>

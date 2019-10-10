@@ -3,11 +3,10 @@
 <script src="__STATIC__/js/app.min.js"></script>
 <script src="__PLUGINS__/layer/layer.js"></script>
 
-
-
 <div class="row">
     <div class="col-md-12">
         <div class="box box-primary">
+
 
             <form id="dataForm" class="form-horizontal dataForm" action="" method="post" enctype="multipart/form-data">
                 <div class="box-body">
@@ -36,10 +35,6 @@
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                     <input  id="name" name="name" value="{$info.names|default=''}"
                                             class="form-control" placeholder="支付寶名称">
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label">订单状态</label>
                             <select class="form-control" id="status">
@@ -48,6 +43,11 @@
                                 <option value="-1" {eq name="$info.status" value="-1"} selected=""{/eq}>已取消</option>
                             </select>
                         </div>
+
+                        {/if}
+
+
+
 
                     </div>
                 </div>
@@ -59,6 +59,7 @@
                     <div class="col-sm-10 col-md-4">
                         <div class="btn-group">
                             <button type="button" class="btn flat btn-info dataform-submit zhuan">
+
                                 保存
                             </button>
                         </div>
@@ -79,6 +80,7 @@
 </div>
 
 <script>
+
     $('.zhuan').click(function(){
         var url = "{:url('order/check_zhuan')}";
 
@@ -99,11 +101,14 @@
 
             if(ret.code==400){
                 layer.msg(ret.msg,function(){
-                    parent.location.href="{:url('order/wei')}";
-                })
+                    parent.location.href="{:url('order/wei')}"
+                }
             }
+
         },'json')
 
+    });
 
-    })
+
 </script>
+

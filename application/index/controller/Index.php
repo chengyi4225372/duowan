@@ -23,7 +23,7 @@ class Index  extends  Base {
 
 
     //1 选择页面
-    public  function index(){
+     public  function index(){
          if($this->request->isGet()){
              $cates = Db::name($this->play)->order('id desc')->select();
              $this->assign('cates',$cates);
@@ -149,7 +149,7 @@ class Index  extends  Base {
     }
 
 
-    //账单记录
+    //账单记录 todo
     public function history(){
         $mid  = Session::get('member.id');
         $list = Db::name($this->order)->where(['mid'=>$mid])->order('id desc')->paginate(5);
@@ -157,7 +157,7 @@ class Index  extends  Base {
         return $this->fetch();
     }
 
-
+    //todo 待完成
     public function check_order(){
 
     }
@@ -179,6 +179,7 @@ class Index  extends  Base {
             return json(['code'=>'400','msg'=>$mes]);
         }
     }
+
 
 
 }

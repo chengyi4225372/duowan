@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:111:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/index\view\index\history.html";i:1570612605;s:99:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\index\view\public\menu.html";i:1570600453;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:111:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/index\view\index\history.html";i:1570613002;s:99:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\index\view\public\menu.html";i:1570600453;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,7 +60,7 @@
     </thead>
     <tbody>
     <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-    <tr onclick="window.location.href='<?php echo url('index/checkorder',array('id'=>$vo['id'])); ?>'">
+    <tr onclick="show_url('<?php echo $vo['id']; ?>')">
         <th scope="row"><?php echo $vo['id']; ?></th>
         <td><?php echo date('Y-m-d,h:i:s',$vo['create_time']); ?></td>
         <td>
@@ -99,6 +99,14 @@
 <script src="/static/admin/plugins/layer/layer.js"></script>
 
 <script>
+function show_url(id){
+    var url = "<?php echo url('index/check_order'); ?>";
+
+    $.get(url,{'id':id},function(ret){
+
+    },'json')
+}
+
 
 </script>
 </body>

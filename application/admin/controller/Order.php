@@ -26,40 +26,41 @@ class Order extends Base
 
     }
 
-    public function edit(){
-        if($this->request->isGet()){
-            $id = input('get.id','','int');
-            $pid= input('get.pid','','int');
-            if(empty($id) || !isset($id)){
+    public function edit()
+    {
+        if ($this->request->isGet()) {
+            $id = input('get.id', '', 'int');
+            $pid = input('get.pid', '', 'int');
+            if (empty($id) || !isset($id)) {
                 return false;
             }
-            
-            if(empty($pid) || !isset($pid)|| $pid <= 0){
+
+            if (empty($pid) || !isset($pid) || $pid <= 0) {
                 return false;
             }
 
 
-            if($pid ==3){
-                $info = Db::name('order')->field('id,pid,alipay,status')->where(['id'=>$id,'pid'=>$pid])->find();
-                $this->assign('info',$info);
+            if ($pid == 3) {
+                $info = Db::name('order')->field('id,pid,alipay,status')->where(['id' => $id, 'pid' => $pid])->find();
+                $this->assign('info', $info);
                 return $this->fetch('zhuan');
             }
 
-            if($pid ==2){
-                $info = Db::name('order')->field('id,pid,imgs,status')->where(['id'=>$id,'pid'=>$pid])->find();
-                $this->assign('info',$info);
+            if ($pid == 2) {
+                $info = Db::name('order')->field('id,pid,imgs,status')->where(['id' => $id, 'pid' => $pid])->find();
+                $this->assign('info', $info);
                 return $this->fetch('chong');
             }
 
-            if($pid ==1){
-                $info = Db::name('order')->field('id,pid,names,status,imgs')->where(['id'=>$id,'pid'=>$pid])->find();
-                $this->assign('info',$info);
+            if ($pid == 1) {
+                $info = Db::name('order')->field('id,pid,names,status,imgs')->where(['id' => $id, 'pid' => $pid])->find();
+                $this->assign('info', $info);
                 return $this->fetch('edit');
             }
 
 
         }
-    } 
+    }
 
     //已完成
     public function over(){
