@@ -149,7 +149,7 @@ class Index  extends  Base {
     }
 
 
-    //账单记录
+    //账单记录 todo
     public function history(){
         $mid  = Session::get('member.id');
         $list = Db::name($this->order)->where(['mid'=>$mid])->order('id desc')->paginate(5);
@@ -157,7 +157,7 @@ class Index  extends  Base {
         return $this->fetch();
     }
 
-
+    //todo 待完成
     public function check_order(){
 
     }

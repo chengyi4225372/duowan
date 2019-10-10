@@ -15,6 +15,7 @@
                         <th>游戏类型</th>
                         <th>用户</th>
                         <th>充值类型</th>
+                        <th>订单状态</th>
                         <th>创建时间</th>
                         <th>操作</th>
                     </tr>
@@ -24,8 +25,26 @@
                     <tr>
                         <td>{$vo.id}</td>
                         <td>{$vo.orderId}</td>
-                        <td>{$vo.mid}</td>
-                        <td>{$vo.cid}</td>
+                        <td>{$play[$vo.cid]}</td>
+                        <td>{$users[$vo.mid]}</td>
+                        <td>
+                            {if condition="$vo.pid eq 1"}
+                            轉數塊
+                            {elseif condition="$vo.pid eq 2" /}
+                            7-11充值
+                            {else /}
+                            好友轉賬
+                            {/if}
+                        </td>
+                        <td>
+                            {if condition="$vo.status eq 0"}
+                            <a class="btn btn-block btn-social btn-github  btn-xs">未確認</a>
+                            {elseif condition="$vo.status eq 1"}
+                            <a class="btn btn-block btn-social btn-flickr btn-xs">已確認</a>
+                            {else /}
+                            <a class="btn btn-block btn-social btn-dropbox btn-xs">已取消</a>
+                            {/if}
+                        </td>
                         <td>{$vo.create_time|date='Y-m-d h:i',###}</td>
 
                         <td class="td-do">
