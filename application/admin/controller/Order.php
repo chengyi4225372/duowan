@@ -33,7 +33,21 @@ class Order extends Base
             $id = input('get.id','','int');
             $pid= input('get.pid','','int');
 
+            if(empty($id) || $id<=0){
+                return false;
+            }
+
+            if($pid ==0 || empty($pid) || !isset($pid)){
+                return false;
+            }
+
+            $info = Db::name('order')->where(['id'=>$id,'pid'=>$pid])->find();
+            $this->assign('info',$info);
             return $this->fetch();
+        }
+
+        if($this->request->isPost()){
+
         }
     }
 
