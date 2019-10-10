@@ -1,14 +1,13 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:86:"C:\Users\Administrator\Desktop\duowan\public/../application/admin\view\order\edit.html";i:1570719424;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:86:"C:\Users\Administrator\Desktop\duowan\public/../application/admin\view\order\edit.html";i:1570720181;}*/ ?>
 
 <link rel="stylesheet" href="/static/admin/css/app.min.css">
 <script src="/static/admin/js/app.min.js"></script>
 <script src="/static/admin/plugins/layer/layer.js"></script>
 
-
-
 <div class="row">
     <div class="col-md-12">
         <div class="box box-primary">
+
 
             <form id="dataForm" class="form-horizontal dataForm" action="" method="post" enctype="multipart/form-data">
                 <div class="box-body">
@@ -37,10 +36,6 @@
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                     <input  id="name" name="name" value="<?php echo (isset($info['names']) && ($info['names'] !== '')?$info['names']:''); ?>"
                                             class="form-control" placeholder="支付寶名称">
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label">订单状态</label>
                             <select class="form-control" id="status">
@@ -49,6 +44,11 @@
                                 <option value="-1" <?php if($info['status'] == '-1'): ?> selected=""<?php endif; ?>>已取消</option>
                             </select>
                         </div>
+
+                        {/if}
+
+
+
 
                     </div>
                 </div>
@@ -60,6 +60,7 @@
                     <div class="col-sm-10 col-md-4">
                         <div class="btn-group">
                             <button type="button" class="btn flat btn-info dataform-submit zhuan">
+
                                 保存
                             </button>
                         </div>
@@ -80,6 +81,7 @@
 </div>
 
 <script>
+
     $('.zhuan').click(function(){
         var url = "<?php echo url('order/check_zhuan'); ?>";
 
@@ -100,11 +102,14 @@
 
             if(ret.code==400){
                 layer.msg(ret.msg,function(){
-                    parent.location.href="<?php echo url('order/wei'); ?>";
-                })
+                    parent.location.href="<?php echo url('order/wei'); ?>"
+                }
             }
+
         },'json')
 
+    });
 
-    })
+
 </script>
+

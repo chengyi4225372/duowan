@@ -3928,3 +3928,460 @@
 [ sql ] [ SQL ] SELECT * FROM `bear_admin_menus` WHERE  `is_show` = 1 ORDER BY `sort_id` ASC,`id` ASC [ RunTime:0.000000s ]
 [ sql ] [ SQL ] SHOW COLUMNS FROM `bear_sysconfigs` [ RunTime:0.012000s ]
 [ sql ] [ SQL ] SELECT * FROM `bear_sysconfigs` WHERE (  `code` = 'backend_name'  AND `status` = 1 ) AND `bear_sysconfigs`.`delete_time` IS NULL LIMIT 1 [ RunTime:0.001000s ]
+---------------------------------------------------------------
+[ 2019-10-10T23:13:19+08:00 ] 127.0.0.1 GET /admin/deng/index.html
+[ info ] local.duo.com/admin/deng/index.html [运行时间：0.351000s][吞吐率：2.85req/s] [内存消耗：2,576.84kb] [文件加载：71]
+[ info ] [ LANG ] C:\Users\Administrator\Desktop\duowan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'deng',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=ggtp2f86rtu4f1mlrqppk01ue2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://local.duo.com/admin/order/nomal.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'local.duo.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'bearadmin_',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Deng->index[ C:\Users\Administrator\Desktop\duowan\application\admin\controller\Deng.php ]
+[ info ] [ VIEW ] C:\Users\Administrator\Desktop\duowan\public/../application/admin\view\deng\index.html [ array (
+  0 => 'info',
+  1 => 'showDataHeader',
+  2 => 'showDataHeaderAddButton',
+  3 => 'showDataHeaderDeleteButton',
+  4 => 'showFormHeader',
+  5 => 'showFormHeaderBackButton',
+  6 => 'showFormFooter',
+  7 => 'showFormFooterSubmitButton',
+  8 => 'showFormFooterResetButton',
+  9 => 'webData',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011000s ] mysql:host=127.0.0.1;port=3306;dbname=duowan;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_admin_menus` [ RunTime:0.016000s ]
+[ sql ] [ SQL ] SELECT * FROM `bear_admin_menus` WHERE  `url` = 'admin/deng/index' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_admin_users` [ RunTime:0.014000s ]
+[ sql ] [ SQL ] SELECT * FROM `bear_admin_users` WHERE (  `id` = 1 ) AND `bear_admin_users`.`delete_time` IS NULL LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_login_img` [ RunTime:0.013000s ]
+[ sql ] [ SQL ] SELECT * FROM `bear_login_img` LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_admin_group_access` [ RunTime:0.013000s ]
+[ sql ] [ SQL ] SELECT `AdminGroupAccess`.`uid`,`AdminGroupAccess`.`group_id`,`AdminGroups`.`name`,`AdminGroups`.`rules` FROM `bear_admin_group_access` `AdminGroupAccess` LEFT JOIN `bear_admin_groups` `AdminGroups` ON `AdminGroupAccess`.`group_id`=`AdminGroups`.`id` WHERE  (  AdminGroupAccess.uid='1' and AdminGroups.status=1 ) [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `condition`,`url`,`id` FROM `bear_admin_menus` WHERE  `id` IN (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,26,27,28,29,30,31,32,33,34,21,22,23,25,24,35,36,44,37,38,39,40,41,43,42,45,46,47,48,49,50,51,52,53,54)  AND `type` = 1  AND `status` = 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `bear_admin_menus` WHERE  `is_show` = 1 ORDER BY `sort_id` ASC,`id` ASC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_sysconfigs` [ RunTime:0.011000s ]
+[ sql ] [ SQL ] SELECT * FROM `bear_sysconfigs` WHERE (  `code` = 'backend_name'  AND `status` = 1 ) AND `bear_sysconfigs`.`delete_time` IS NULL LIMIT 1 [ RunTime:0.001000s ]
+---------------------------------------------------------------
+[ 2019-10-10T23:13:21+08:00 ] 127.0.0.1 GET /admin/deng/types.html
+[ info ] local.duo.com/admin/deng/types.html [运行时间：0.321000s][吞吐率：3.12req/s] [内存消耗：2,721.47kb] [文件加载：73]
+[ info ] [ LANG ] C:\Users\Administrator\Desktop\duowan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'deng',
+    2 => 'types',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=ggtp2f86rtu4f1mlrqppk01ue2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://local.duo.com/admin/deng/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'local.duo.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'bearadmin_',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Deng->types[ C:\Users\Administrator\Desktop\duowan\application\admin\controller\Deng.php ]
+[ info ] [ VIEW ] C:\Users\Administrator\Desktop\duowan\public/../application/admin\view\deng\types.html [ array (
+  0 => 'info',
+  1 => 'showDataHeader',
+  2 => 'showDataHeaderAddButton',
+  3 => 'showDataHeaderDeleteButton',
+  4 => 'showFormHeader',
+  5 => 'showFormHeaderBackButton',
+  6 => 'showFormFooter',
+  7 => 'showFormFooterSubmitButton',
+  8 => 'showFormFooterResetButton',
+  9 => 'webData',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;port=3306;dbname=duowan;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_admin_menus` [ RunTime:0.011000s ]
+[ sql ] [ SQL ] SELECT * FROM `bear_admin_menus` WHERE  `url` = 'admin/deng/types' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_admin_users` [ RunTime:0.011000s ]
+[ sql ] [ SQL ] SELECT * FROM `bear_admin_users` WHERE (  `id` = 1 ) AND `bear_admin_users`.`delete_time` IS NULL LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_type_img` [ RunTime:0.010000s ]
+[ sql ] [ SQL ] SELECT * FROM `bear_type_img` LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_admin_group_access` [ RunTime:0.010000s ]
+[ sql ] [ SQL ] SELECT `AdminGroupAccess`.`uid`,`AdminGroupAccess`.`group_id`,`AdminGroups`.`name`,`AdminGroups`.`rules` FROM `bear_admin_group_access` `AdminGroupAccess` LEFT JOIN `bear_admin_groups` `AdminGroups` ON `AdminGroupAccess`.`group_id`=`AdminGroups`.`id` WHERE  (  AdminGroupAccess.uid='1' and AdminGroups.status=1 ) [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `condition`,`url`,`id` FROM `bear_admin_menus` WHERE  `id` IN (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,26,27,28,29,30,31,32,33,34,21,22,23,25,24,35,36,44,37,38,39,40,41,43,42,45,46,47,48,49,50,51,52,53,54)  AND `type` = 1  AND `status` = 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `bear_admin_menus` WHERE  `is_show` = 1 ORDER BY `sort_id` ASC,`id` ASC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_sysconfigs` [ RunTime:0.010000s ]
+[ sql ] [ SQL ] SELECT * FROM `bear_sysconfigs` WHERE (  `code` = 'backend_name'  AND `status` = 1 ) AND `bear_sysconfigs`.`delete_time` IS NULL LIMIT 1 [ RunTime:0.001000s ]
+---------------------------------------------------------------
+[ 2019-10-10T23:13:38+08:00 ] 127.0.0.1 POST /index/index/upimgs.html
+[ info ] local.duo.com/index/index/upimgs.html [运行时间：0.147000s][吞吐率：6.80req/s] [内存消耗：2,008.18kb] [文件加载：59]
+[ info ] [ LANG ] C:\Users\Administrator\Desktop\duowan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'upimgs',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=ggtp2f86rtu4f1mlrqppk01ue2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://local.duo.com/index/index/zhuan.html?order=26',
+  'content-type' => 'multipart/form-data; boundary=----WebKitFormBoundaryf8XjoaxSyQF0JEuC',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://local.duo.com',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '20522',
+  'connection' => 'close',
+  'host' => 'local.duo.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'bearadmin_',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Index->Upimgs[ C:\Users\Administrator\Desktop\duowan\application\index\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;port=3306;dbname=duowan;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_url` [ RunTime:0.011000s ]
+[ sql ] [ SQL ] SELECT * FROM `bear_url` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_other` [ RunTime:0.010000s ]
+[ sql ] [ SQL ] SELECT * FROM `bear_other` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_login_img` [ RunTime:0.010000s ]
+[ sql ] [ SQL ] SELECT * FROM `bear_login_img` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_type_img` [ RunTime:0.010000s ]
+[ sql ] [ SQL ] SELECT * FROM `bear_type_img` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2019-10-10T23:13:42+08:00 ] 127.0.0.1 POST /index/index/zhuan.html
+[ info ] local.duo.com/index/index/zhuan.html [运行时间：0.165000s][吞吐率：6.06req/s] [内存消耗：2,030.22kb] [文件加载：61]
+[ info ] [ LANG ] C:\Users\Administrator\Desktop\duowan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'zhuan',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=ggtp2f86rtu4f1mlrqppk01ue2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://local.duo.com/index/index/zhuan.html?order=26',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://local.duo.com',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '96',
+  'connection' => 'close',
+  'host' => 'local.duo.com',
+)
+[ info ] [ PARAM ] array (
+  'order' => '26',
+  'imgs' => '/Upload/imgs/20191010/d6dfc61cb0a039eea2f6fbea2a0117ae.png',
+  'names' => 'vhvhhhvhv',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'bearadmin_',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Index->zhuan[ C:\Users\Administrator\Desktop\duowan\application\index\controller\Index.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;port=3306;dbname=duowan;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_url` [ RunTime:0.012000s ]
+[ sql ] [ SQL ] SELECT * FROM `bear_url` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_other` [ RunTime:0.011000s ]
+[ sql ] [ SQL ] SELECT * FROM `bear_other` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_login_img` [ RunTime:0.011000s ]
+[ sql ] [ SQL ] SELECT * FROM `bear_login_img` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_type_img` [ RunTime:0.011000s ]
+[ sql ] [ SQL ] SELECT * FROM `bear_type_img` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_order` [ RunTime:0.012000s ]
+[ sql ] [ SQL ] UPDATE `bear_order`  SET `imgs`='/Upload/imgs/20191010/d6dfc61cb0a039eea2f6fbea2a0117ae.png',`names`='vhvhhhvhv'  WHERE  `id` = 26 [ RunTime:0.038000s ]
+---------------------------------------------------------------
+[ 2019-10-10T23:13:46+08:00 ] 127.0.0.1 GET /index/index/index.html
+[ info ] local.duo.com/index/index/index.html [运行时间：0.153000s][吞吐率：6.54req/s] [内存消耗：2,040.25kb] [文件加载：61]
+[ info ] [ LANG ] C:\Users\Administrator\Desktop\duowan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=ggtp2f86rtu4f1mlrqppk01ue2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://local.duo.com/index/index/zhuan.html?order=26',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'local.duo.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'bearadmin_',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Index->index[ C:\Users\Administrator\Desktop\duowan\application\index\controller\Index.php ]
+[ info ] [ VIEW ] C:\Users\Administrator\Desktop\duowan\public/../application/index\view\index\index.html [ array (
+  0 => 'urls',
+  1 => 'other',
+  2 => 'login_img',
+  3 => 'type_img',
+  4 => 'cates',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;port=3306;dbname=duowan;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_url` [ RunTime:0.012000s ]
+[ sql ] [ SQL ] SELECT * FROM `bear_url` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_other` [ RunTime:0.014000s ]
+[ sql ] [ SQL ] SELECT * FROM `bear_other` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_login_img` [ RunTime:0.013000s ]
+[ sql ] [ SQL ] SELECT * FROM `bear_login_img` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_type_img` [ RunTime:0.013000s ]
+[ sql ] [ SQL ] SELECT * FROM `bear_type_img` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_play_cates` [ RunTime:0.013000s ]
+[ sql ] [ SQL ] SELECT * FROM `bear_play_cates` ORDER BY `id` DESC [ RunTime:0.001000s ]
+---------------------------------------------------------------
+[ 2019-10-10T23:13:46+08:00 ] 127.0.0.1 GET /static/index/js/bootstrap.min.js.map
+[ info ] local.duo.com/static/index/js/bootstrap.min.js.map [运行时间：0.079000s][吞吐率：12.66req/s] [内存消耗：1,131.02kb] [文件加载：48]
+[ info ] [ LANG ] C:\Users\Administrator\Desktop\duowan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'static',
+    1 => 'index',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=ggtp2f86rtu4f1mlrqppk01ue2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'connection' => 'close',
+  'host' => 'local.duo.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-10-10T23:13:47+08:00 ] 127.0.0.1 GET /static/index/css/bootstrap.min.css.map
+[ info ] local.duo.com/static/index/css/bootstrap.min.css.map [运行时间：0.090000s][吞吐率：11.11req/s] [内存消耗：1,131.02kb] [文件加载：48]
+[ info ] [ LANG ] C:\Users\Administrator\Desktop\duowan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'static',
+    1 => 'index',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=ggtp2f86rtu4f1mlrqppk01ue2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'connection' => 'close',
+  'host' => 'local.duo.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-10-10T23:13:53+08:00 ] 127.0.0.1 GET /admin/order/wei.html
+[ info ] local.duo.com/admin/order/wei.html [运行时间：0.187000s][吞吐率：5.35req/s] [内存消耗：2,724.52kb] [文件加载：74]
+[ info ] [ LANG ] C:\Users\Administrator\Desktop\duowan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'order',
+    2 => 'wei',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=ggtp2f86rtu4f1mlrqppk01ue2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://local.duo.com/admin/deng/types.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'local.duo.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'bearadmin_',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Order->wei[ C:\Users\Administrator\Desktop\duowan\application\admin\controller\Order.php ]
+[ info ] [ VIEW ] C:\Users\Administrator\Desktop\duowan\public/../application/admin\view\order\wei.html [ array (
+  0 => 'list',
+  1 => 'play',
+  2 => 'users',
+  3 => 'showDataHeader',
+  4 => 'showDataHeaderAddButton',
+  5 => 'showDataHeaderDeleteButton',
+  6 => 'showFormHeader',
+  7 => 'showFormHeaderBackButton',
+  8 => 'showFormFooter',
+  9 => 'showFormFooterSubmitButton',
+  10 => 'showFormFooterResetButton',
+  11 => 'webData',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011000s ] mysql:host=127.0.0.1;port=3306;dbname=duowan;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_admin_menus` [ RunTime:0.011000s ]
+[ sql ] [ SQL ] SELECT * FROM `bear_admin_menus` WHERE  `url` = 'admin/order/wei' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_admin_users` [ RunTime:0.010000s ]
+[ sql ] [ SQL ] SELECT * FROM `bear_admin_users` WHERE (  `id` = 1 ) AND `bear_admin_users`.`delete_time` IS NULL LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_order` [ RunTime:0.011000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `bear_order` WHERE  `status` = 0 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `bear_order` WHERE  `status` = 0 LIMIT 0,15 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_play_cates` [ RunTime:0.011000s ]
+[ sql ] [ SQL ] SELECT `id`,`title` FROM `bear_play_cates` ORDER BY `id` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_users` [ RunTime:0.011000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `bear_users` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_admin_group_access` [ RunTime:0.010000s ]
+[ sql ] [ SQL ] SELECT `AdminGroupAccess`.`uid`,`AdminGroupAccess`.`group_id`,`AdminGroups`.`name`,`AdminGroups`.`rules` FROM `bear_admin_group_access` `AdminGroupAccess` LEFT JOIN `bear_admin_groups` `AdminGroups` ON `AdminGroupAccess`.`group_id`=`AdminGroups`.`id` WHERE  (  AdminGroupAccess.uid='1' and AdminGroups.status=1 ) [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `condition`,`url`,`id` FROM `bear_admin_menus` WHERE  `id` IN (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,26,27,28,29,30,31,32,33,34,21,22,23,25,24,35,36,44,37,38,39,40,41,43,42,45,46,47,48,49,50,51,52,53,54)  AND `type` = 1  AND `status` = 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `bear_admin_menus` WHERE  `is_show` = 1 ORDER BY `sort_id` ASC,`id` ASC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_sysconfigs` [ RunTime:0.011000s ]
+[ sql ] [ SQL ] SELECT * FROM `bear_sysconfigs` WHERE (  `code` = 'backend_name'  AND `status` = 1 ) AND `bear_sysconfigs`.`delete_time` IS NULL LIMIT 1 [ RunTime:0.001000s ]
+---------------------------------------------------------------
+[ 2019-10-10T23:13:55+08:00 ] 127.0.0.1 GET /admin/order/edit.html?id=23&pid=1
+[ info ] local.duo.com/admin/order/edit.html?id=23&pid=1 [运行时间：0.164000s][吞吐率：6.10req/s] [内存消耗：2,707.87kb] [文件加载：73]
+[ info ] [ LANG ] C:\Users\Administrator\Desktop\duowan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'order',
+    2 => 'edit',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=ggtp2f86rtu4f1mlrqppk01ue2',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://local.duo.com/admin/order/wei.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'local.duo.com',
+)
+[ info ] [ PARAM ] array (
+  'id' => '23',
+  'pid' => '1',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'bearadmin_',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Order->edit[ C:\Users\Administrator\Desktop\duowan\application\admin\controller\Order.php ]
+[ info ] [ VIEW ] C:\Users\Administrator\Desktop\duowan\public/../application/admin\view\order\edit.html [ array (
+  0 => 'info',
+  1 => 'showDataHeader',
+  2 => 'showDataHeaderAddButton',
+  3 => 'showDataHeaderDeleteButton',
+  4 => 'showFormHeader',
+  5 => 'showFormHeaderBackButton',
+  6 => 'showFormFooter',
+  7 => 'showFormFooterSubmitButton',
+  8 => 'showFormFooterResetButton',
+  9 => 'webData',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;port=3306;dbname=duowan;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_admin_menus` [ RunTime:0.012000s ]
+[ sql ] [ SQL ] SELECT * FROM `bear_admin_menus` WHERE  `url` = 'admin/order/edit' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_admin_users` [ RunTime:0.012000s ]
+[ sql ] [ SQL ] SELECT * FROM `bear_admin_users` WHERE (  `id` = 1 ) AND `bear_admin_users`.`delete_time` IS NULL LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_order` [ RunTime:0.012000s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`names`,`status`,`imgs` FROM `bear_order` WHERE  `id` = 23  AND `pid` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_admin_group_access` [ RunTime:0.011000s ]
+[ sql ] [ SQL ] SELECT `AdminGroupAccess`.`uid`,`AdminGroupAccess`.`group_id`,`AdminGroups`.`name`,`AdminGroups`.`rules` FROM `bear_admin_group_access` `AdminGroupAccess` LEFT JOIN `bear_admin_groups` `AdminGroups` ON `AdminGroupAccess`.`group_id`=`AdminGroups`.`id` WHERE  (  AdminGroupAccess.uid='1' and AdminGroups.status=1 ) [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `condition`,`url`,`id` FROM `bear_admin_menus` WHERE  `id` IN (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,26,27,28,29,30,31,32,33,34,21,22,23,25,24,35,36,44,37,38,39,40,41,43,42,45,46,47,48,49,50,51,52,53,54)  AND `type` = 1  AND `status` = 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `bear_admin_menus` WHERE  `is_show` = 1 ORDER BY `sort_id` ASC,`id` ASC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bear_sysconfigs` [ RunTime:0.012000s ]
+[ sql ] [ SQL ] SELECT * FROM `bear_sysconfigs` WHERE (  `code` = 'backend_name'  AND `status` = 1 ) AND `bear_sysconfigs`.`delete_time` IS NULL LIMIT 1 [ RunTime:0.001000s ]
