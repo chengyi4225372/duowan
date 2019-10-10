@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:86:"C:\Users\Administrator\Desktop\duowan\public/../application/admin\view\order\over.html";i:1570627666;s:81:"C:\Users\Administrator\Desktop\duowan\application\admin\view\template\layout.html";i:1569679790;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:89:"C:\Users\Administrator\Desktop\duowan\public/../application/admin\view\sysconfig\add.html";i:1569679790;s:81:"C:\Users\Administrator\Desktop\duowan\application\admin\view\template\layout.html";i:1569679790;s:86:"C:\Users\Administrator\Desktop\duowan\application\admin\view\template\form_header.html";i:1569679790;s:86:"C:\Users\Administrator\Desktop\duowan\application\admin\view\template\form_footer.html";i:1569679790;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -129,129 +129,105 @@
         </section>
         <section class="content">
             <div class="row">
-
-</div>
-
-<div class="row">
     <div class="col-md-12">
-        <div class="box">
-
-            <div class="box-body table-responsive">
-                <table class="table table-hover table-bordered datatable" width="100%">
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>订单号</th>
-                        <th>游戏类型</th>
-                        <th>用户</th>
-                        <th>充值类型</th>
-                        <th>订单状态</th>
-                        <th>创建时间</th>
-                        <th>操作</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-                    <tr>
-                        <td><?php echo $vo['id']; ?></td>
-                        <td><?php echo $vo['orderId']; ?></td>
-                        <td><?php echo $play[$vo['cid']]; ?></td>
-                        <td><?php echo $users[$vo['mid']]; ?></td>
-                        <td>
-                            <?php if($vo['pid'] == 1): ?>
-                            轉數塊
-                            <?php elseif($vo['pid'] == 2): ?>
-                            7-11充值
-                            <?php else: ?>
-                            好友轉賬
-                            <?php endif; ?>
-                        </td>
-                        <td>
-                            <?php if($vo['status'] == 0): ?>
-                            <a class="btn btn-block btn-social btn-github  btn-xs">未確認</a>
-                            <?php elseif($vo['status'] == 1): ?>
-                            <a class="btn btn-block btn-social btn-flickr btn-xs">已確認</a>
-                            <?php else: ?>
-                            <a class="btn btn-block btn-social btn-dropbox btn-xs">已取消</a>
-                            <?php endif; ?>
-                        </td>
-                        <td><?php echo date('Y-m-d h:i',$vo['create_time']); ?></td>
-
-                        <td class="td-do">
-                            <a data-href="<?php echo url('order/edit',array('id'=>$vo['id'],'pid'=>$vo['pid'])); ?>"
-                               class="btn btn-primary btn-xs edit" title="修改">
-                                <i class="fa fa-pencil"></i>
-                            </a>
-                            <a class="btn btn-danger btn-xs del"
-                               title="删除"  data-url="<?php echo url('order/del',array('id'=>$vo['id'])); ?>">
-                                <i class="fa fa-trash"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <?php endforeach; endif; else: echo "" ;endif; ?>
-
-
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="box-footer">
-                <?php echo $list->render(); ?>
-                <label class="control-label pull-right" style="margin-right: 10px; font-weight: 100;">
-                    <?php if(isset($total)): ?>
-                    <small>共<?php echo $total; ?> 条记录</small>
-                    &nbsp;
-                    <?php endif; ?>
-                    <small>每页显示10条</small>
-                </label>
-            </div>
-
-
+        <div class="box box-primary">
+            <?php if($showFormHeader): ?>
+<div class="box-header with-border">
+    <?php if($showFormHeaderBackButton): ?>
+    <div class="btn-group">
+        <a class="btn flat btn-sm btn-default form-history-back">
+            <i class="fa fa-arrow-left"></i>
+            返回
+        </a>
+    </div>
+    <?php endif; ?>
+</div>
+<?php endif; ?>
+            <form id="dataForm" class="dataForm form-horizontal" action="" method="post" enctype="multipart/form-data">
+                <div class="box-body">
+                    <div class="fields-group">
+                        <?php if(isset($info)): ?>
+                        <input id="id" name="id" value="<?php echo $info['id']; ?>" hidden placeholder="请勿修改">
+                        <?php endif; ?>
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">名称</label>
+                            <div class="col-sm-10 col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+                                    <input maxlength="20" id="name" name="name" value="<?php echo (isset($info['name']) && ($info['name'] !== '')?$info['name']:''); ?>"
+                                           class="form-control" placeholder="请输入设置名称">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="code" class="col-sm-2 control-label">代码</label>
+                            <div class="col-sm-10 col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-code"></i></span>
+                                    <input maxlength="20" id="code" name="code" value="<?php echo (isset($info['code']) && ($info['code'] !== '')?$info['code']:''); ?>"
+                                           class="form-control" placeholder="请输入代码">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="content" class="col-sm-2 control-label">参数</label>
+                            <div class="col-sm-10 col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
+                                    <input maxlength="300" id="content" name="content" value="<?php echo (isset($info['content']) && ($info['content'] !== '')?$info['content']:''); ?>"
+                                           class="form-control" placeholder="请输入参数">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="description" class="col-sm-2 control-label">说明</label>
+                            <div class="col-sm-10 col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa  fa-sticky-note"></i></span>
+                                    <input maxlength="20" id="description" name="description" value="<?php echo (isset($info['description']) && ($info['description'] !== '')?$info['description']:''); ?>"
+                                           class="form-control" placeholder="请输入说明">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="status" class="col-sm-2 control-label">是否启用</label>
+                            <div class="col-sm-10 col-md-4">
+                                <div class="input-group iconpicker-container">
+                                    <input <?php if((isset($info) && $info['status']==1) || !isset($info)): ?>checked<?php endif; ?>
+                                    value="<?php echo (isset($info['status']) && ($info['status'] !== '')?$info['status']:'1'); ?>"
+                                    class="form-input-switch" type="checkbox" placeholder="status-switch" data-input="status">
+                                    <input id="status" name="status" value="<?php echo (isset($info['status']) && ($info['status'] !== '')?$info['status']:'1'); ?>" type="hidden"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php if($showFormFooter): ?>
+<div class="box-footer">
+    <?php echo token(); ?>
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-10 col-md-4">
+        <?php if($showFormFooterSubmitButton): ?>
+        <div class="btn-group">
+            <button type="submit" class="btn flat btn-info dataform-submit">
+                <?php echo (isset($sub_title) && ($sub_title !== '')?$sub_title:'保存'); ?>
+            </button>
         </div>
-
-        <script>
-
-            $('.edit').click(function(){
-                var url = $(this).attr('data-href');
-
-                layer.open({
-                    type: 2,
-                    title: '添加',
-                    area: ['50%', '60%'],
-                    anim: 2,
-                    content: url, //iframe的url，no代表不显示滚动条
-                })
-            })
-
-
-            $('.del').click(function(){
-
-                var url = $(this).attr('data-url');
-
-                layer.confirm('您是确定要删除？', {
-                    btn: ['确定','点错了'] //按钮
-                }, function(){
-                    $.get(url,function(ret){
-                        if(ret.code == 200){
-                            layer.msg(ret.msg,function(){
-                                parent.location.reload();
-                            })
-                        }
-
-                        if(ret.code == 400){
-                            layer.msg(ret.msg,function(){
-                                parent.location.reload();
-                            })
-                        }
-                    },'json')
-                }, function(){
-                    layer.close();
-                });
-
-            })
-
-        </script>
-
+        <?php endif; if($showFormFooterResetButton): ?>
+        <div class="btn-group">
+            <button type="reset" class="btn flat btn-default dataform-reset">
+                重置
+            </button>
+        </div>
+        <?php endif; ?>
+    </div>
+</div>
+<?php endif; ?>
+            </form>
+        </div>
+    </div>
+</div>
         </section>
     </div>
 

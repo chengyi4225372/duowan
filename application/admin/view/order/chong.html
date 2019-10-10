@@ -1,0 +1,98 @@
+{__NOLAYOUT__}
+<link rel="stylesheet" href="__STATIC__/css/app.min.css">
+<script src="__STATIC__/js/app.min.js"></script>
+<script src="__PLUGINS__/layer/layer.js"></script>
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+
+            <form id="dataForm" class="form-horizontal dataForm" action="" method="post" enctype="multipart/form-data">
+                <div class="box-body">
+                    <div class="fields-group">
+                        {if isset($info)}
+                        <input id="mid"  value="{$info.id}" hidden placeholder="请勿修改">
+                        <input id="pid"  value="{$info.pid}" hidden placeholder="请勿修改">
+                        {/if}
+
+
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">支付凭证图</label>
+                            <div class="col-sm-10 col-md-4">
+                                <div class="input-group">
+                                    <a href="{$info.imgs|default=''}">
+                                    <img src="{$info.imgs|default='/static/index/images/images.png'}" alt="" style="max-width: 200px;max-height: 200px">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">订单状态</label>
+                            <select class="form-control" id="status">
+                                <option value="0" {eq name="$info.status" value="0"} selected=""{/eq}>未確認</option>
+                                <option value="1" {eq name="$info.status" value="1"} selected=""{/eq}>已確認 </option>
+                                <option value="-1" {eq name="$info.status" value="-1"} selected=""{/eq}>已取消</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="box-footer">
+                    <div class="col-sm-2">
+                    </div>
+                    <div class="col-sm-10 col-md-4">
+                        <div class="btn-group">
+                            <button type="button" class="btn flat btn-info dataform-submit zhuan">
+                                保存
+                            </button>
+                        </div>
+
+                        <div class="btn-group">
+                            <button type="reset" class="btn flat btn-default dataform-reset">
+                                重置
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('.zhuan').click(function(){
+        var url = "{:url('order/check_chong')}";
+
+        var mid = $('#mid').val();
+        var pid = $('#pid').val();
+        var status = $('#status option:selected').val();
+
+        if(mid == '' || pid == ''){
+            return false;
+        }
+
+        $.post(url,{'pid':pid,'mid':mid,'status':status},function(ret){
+            if(ret.code==200){
+                layer.msg(ret.msg,function(){
+                    parent.location.href="{:url('order/wei')}";
+                })
+            }
+
+            if(ret.code==400){
+                layer.msg(ret.msg,function(){
+                    parent.location.href="{:url('order/wei')}";
+                })
+            }
+        },'json')
+
+
+    })
+</script>

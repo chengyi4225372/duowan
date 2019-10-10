@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:86:"C:\Users\Administrator\Desktop\duowan\public/../application/admin\view\order\over.html";i:1570627666;s:81:"C:\Users\Administrator\Desktop\duowan\application\admin\view\template\layout.html";i:1569679790;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:94:"C:\Users\Administrator\Desktop\duowan\public/../application/admin\view\admin_user\profile.html";i:1569679790;s:81:"C:\Users\Administrator\Desktop\duowan\application\admin\view\template\layout.html";i:1569679790;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -129,129 +129,124 @@
         </section>
         <section class="content">
             <div class="row">
-
-</div>
-
-<div class="row">
-    <div class="col-md-12">
-        <div class="box">
-
-            <div class="box-body table-responsive">
-                <table class="table table-hover table-bordered datatable" width="100%">
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>订单号</th>
-                        <th>游戏类型</th>
-                        <th>用户</th>
-                        <th>充值类型</th>
-                        <th>订单状态</th>
-                        <th>创建时间</th>
-                        <th>操作</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-                    <tr>
-                        <td><?php echo $vo['id']; ?></td>
-                        <td><?php echo $vo['orderId']; ?></td>
-                        <td><?php echo $play[$vo['cid']]; ?></td>
-                        <td><?php echo $users[$vo['mid']]; ?></td>
-                        <td>
-                            <?php if($vo['pid'] == 1): ?>
-                            轉數塊
-                            <?php elseif($vo['pid'] == 2): ?>
-                            7-11充值
-                            <?php else: ?>
-                            好友轉賬
-                            <?php endif; ?>
-                        </td>
-                        <td>
-                            <?php if($vo['status'] == 0): ?>
-                            <a class="btn btn-block btn-social btn-github  btn-xs">未確認</a>
-                            <?php elseif($vo['status'] == 1): ?>
-                            <a class="btn btn-block btn-social btn-flickr btn-xs">已確認</a>
-                            <?php else: ?>
-                            <a class="btn btn-block btn-social btn-dropbox btn-xs">已取消</a>
-                            <?php endif; ?>
-                        </td>
-                        <td><?php echo date('Y-m-d h:i',$vo['create_time']); ?></td>
-
-                        <td class="td-do">
-                            <a data-href="<?php echo url('order/edit',array('id'=>$vo['id'],'pid'=>$vo['pid'])); ?>"
-                               class="btn btn-primary btn-xs edit" title="修改">
-                                <i class="fa fa-pencil"></i>
-                            </a>
-                            <a class="btn btn-danger btn-xs del"
-                               title="删除"  data-url="<?php echo url('order/del',array('id'=>$vo['id'])); ?>">
-                                <i class="fa fa-trash"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <?php endforeach; endif; else: echo "" ;endif; ?>
-
-
-                    </tbody>
-                </table>
+    <div class="col-md-3">
+        <div class="box box-primary">
+            <div class="box-body box-profile">
+                <img class="profile-user-img img-responsive img-circle" src="<?php echo $user['avatar']; ?>" alt="头像">
+                <h3 class="profile-username text-center"><?php echo $user['nickname']; ?></h3>
+                <p class="text-muted text-center"><?php echo $user['name']; ?></p>
             </div>
-
-            <div class="box-footer">
-                <?php echo $list->render(); ?>
-                <label class="control-label pull-right" style="margin-right: 10px; font-weight: 100;">
-                    <?php if(isset($total)): ?>
-                    <small>共<?php echo $total; ?> 条记录</small>
-                    &nbsp;
-                    <?php endif; ?>
-                    <small>每页显示10条</small>
-                </label>
-            </div>
-
-
         </div>
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">详情资料</h3>
+            </div>
+            <div class="box-body">
+                <strong><i class="fa fa-envelope"></i> 手机</strong>
+                <p class="text-muted"><?php echo $user->mobile; ?></p>
+                <hr>
+                <strong><i class="fa fa-envelope"></i> 邮箱</strong>
+                <p class="text-muted"><?php echo $user->email; ?></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#profile" data-toggle="tab" aria-expanded="true">个人信息</a></li>
+                <li class=""><a href="#privacy" data-toggle="tab" aria-expanded="false">修改密码</a></li>
+                <li class=""><a href="#avatars" data-toggle="tab" aria-expanded="false">修改头像</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="profile">
+                    <form class="dataForm form-horizontal" action="" method="post">
+                        <input type="hidden" value="profile" name="update_type" placeholder="请勿修改">
 
-        <script>
+                        <div class="form-group">
+                            <label for="nickname" class="col-sm-2 control-label">昵称</label>
+                            <div class="col-sm-10 col-md-4">
+                                <input class="form-control" value="<?php echo $user->nickname; ?>" name="nickname"
+                                       id="nickname" maxlength="30"
+                                       placeholder="昵称或姓名">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="mobile" class="col-sm-2 control-label">手机</label>
+                            <div class="col-sm-10 col-md-4">
+                                <input type="tel" maxlength="11" autocomplete='tel-national' class="form-control" value="<?php echo $user->mobile; ?>" name="mobile"
+                                       id="mobile" placeholder="手机号">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-sm-2 control-label">邮箱</label>
+                            <div class="col-sm-10 col-md-4">
+                                <input type="email" autocomplete='email' class="form-control" value="<?php echo $user->email; ?>" name="email"
+                                       id="email" placeholder="邮箱">
+                            </div>
+                        </div>
+                        <?php echo token(); ?>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-danger">保存</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
 
-            $('.edit').click(function(){
-                var url = $(this).attr('data-href');
-
-                layer.open({
-                    type: 2,
-                    title: '添加',
-                    area: ['50%', '60%'],
-                    anim: 2,
-                    content: url, //iframe的url，no代表不显示滚动条
-                })
-            })
-
-
-            $('.del').click(function(){
-
-                var url = $(this).attr('data-url');
-
-                layer.confirm('您是确定要删除？', {
-                    btn: ['确定','点错了'] //按钮
-                }, function(){
-                    $.get(url,function(ret){
-                        if(ret.code == 200){
-                            layer.msg(ret.msg,function(){
-                                parent.location.reload();
-                            })
-                        }
-
-                        if(ret.code == 400){
-                            layer.msg(ret.msg,function(){
-                                parent.location.reload();
-                            })
-                        }
-                    },'json')
-                }, function(){
-                    layer.close();
-                });
-
-            })
-
-        </script>
-
+                <div class="tab-pane" id="privacy">
+                    <form class="dataForm form-horizontal" action="" method="post">
+                        <input type="hidden" value="password" name="update_type" placeholder="请勿修改">
+                        <div class="form-group">
+                            <label for="password" class="col-sm-2 control-label">当前密码</label>
+                            <div class="col-sm-10 col-md-4">
+                                <input type="password" autocomplete='password' class="form-control" name="password" id="password"
+                                       placeholder="请输入当前密码">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="newpassword" class="col-sm-2 control-label">新密码</label>
+                            <div class="col-sm-10 col-md-4">
+                                <input type="password" class="form-control" autocomplete='newpassword' name="newpassword" id="newpassword"
+                                       placeholder="请输入新密码">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="newpassword_do" class="col-sm-2 control-label">确认新密码</label>
+                            <div class="col-sm-10 col-md-4">
+                                <input type="password" class="form-control" autocomplete='newpassword_do' name="newpassword_do" id="newpassword_do"
+                                       placeholder="再次输入新密码">
+                            </div>
+                        </div>
+                        <?php echo token(); ?>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-danger">保存</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane" id="avatars">
+                    <form class="dataForm form-horizontal" action="" method="post" enctype="multipart/form-data">
+                        <input type="hidden" value="avatar" name="update_type" placeholder="请勿淘气修改">
+                        <div class="form-group">
+                            <label for="avatar" class="col-sm-2 control-label">头像</label>
+                            <div class="col-sm-10 col-md-4">
+                                <input type="file" class="form-control" name="avatar" id="avatar"
+                                       placeholder="头像可空">
+                            </div>
+                        </div>
+                        <?php echo token(); ?>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-danger">保存</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
         </section>
     </div>
 

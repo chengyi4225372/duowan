@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:85:"C:\Users\Administrator\Desktop\duowan\public/../application/admin\view\order\wei.html";i:1570627446;s:81:"C:\Users\Administrator\Desktop\duowan\application\admin\view\template\layout.html";i:1569679790;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:85:"C:\Users\Administrator\Desktop\duowan\public/../application/admin\view\order\wei.html";i:1570717962;s:81:"C:\Users\Administrator\Desktop\duowan\application\admin\view\template\layout.html";i:1569679790;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -178,7 +178,7 @@
                         <td><?php echo date('Y-m-d h:i',$vo['create_time']); ?></td>
 
                         <td class="td-do">
-                            <a data-href="<?php echo url('order/edit',array('id'=>$vo['id'])); ?>"
+                            <a data-href="<?php echo url('order/edit',array('id'=>$vo['id'],'pid'=>$vo['pid'])); ?>"
                                class="btn btn-primary btn-xs edit" title="修改">
                                 <i class="fa fa-pencil"></i>
                             </a>
