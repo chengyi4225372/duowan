@@ -107,6 +107,12 @@
                 });
             }
 
+            if(ret.code==405){
+                layer.msg(ret.msg,function(){
+                    parent.location.href="{:url('order/wei')}";
+                })
+            }
+
         },'json')
 
     });

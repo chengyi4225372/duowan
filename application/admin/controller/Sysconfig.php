@@ -15,6 +15,7 @@ class Sysconfig extends Base
         $model = new Sysconfigs();
         $list    = $model->paginate($this->webData['list_rows']);
 
+
         $this->assign([
             'list' => $list,
             'total' => $list->total(),

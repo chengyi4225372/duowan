@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="renderer" content="webkit">
-    <title>多玩后台管理</title>
+    <title>{$webData['title']|default="后台管理"}</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -37,7 +37,7 @@
 <div class="wrapper">
     <header class="main-header">
         <a class="logo">
-            <span class="logo-lg"><b>多玩后台管理</b></span>
+            <span class="logo-lg"><b>{$webData['backend_name']|default=''}</b></span>
         </a>
         <nav class="navbar navbar-static-top">
             <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">

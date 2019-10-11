@@ -36,7 +36,7 @@ class Order extends Base
             }
 
             if (empty($pid) || !isset($pid) || $pid <= 0) {
-                return false;
+                return json(['code'=>405,'msg'=>'数据异常,建议删除该订单']);
             }
 
 
@@ -57,7 +57,6 @@ class Order extends Base
                 $this->assign('info', $info);
                 return $this->fetch('edit');
             }
-
 
         }
     }
