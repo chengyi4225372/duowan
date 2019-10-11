@@ -13,7 +13,7 @@ class Order extends Base
     public function wei(){
 
         if($this->request->isGet()){
-          $list = Db::name($this->dataform)->where('status',0)->paginate(15);
+          $list = Db::name($this->dataform)->where('status',0)->order('id desc')->paginate(15);
           $play = Db::name('play_cates')->field('id,title')->order('id desc')->select();
           $user = Db::name('users')->field('id,name')->select();
           $play = array_column($play,'title','id');
@@ -65,7 +65,7 @@ class Order extends Base
     //已完成
     public function over(){
         if($this->request->isGet()){
-            $list = Db::name($this->dataform)->where('status',1)->paginate(15);
+            $list = Db::name($this->dataform)->where('status',1)->order('id desc')->paginate(15);
             $play = Db::name('play_cates')->field('id,title')->order('id desc')->select();
             $user = Db::name('users')->field('id,name')->select();
             $play = array_column($play,'title','id');
@@ -80,7 +80,7 @@ class Order extends Base
     //已取消
     public function nomal(){
         if($this->request->isGet()){
-            $list = Db::name($this->dataform)->where('status',-1)->paginate(15);
+            $list = Db::name($this->dataform)->where('status',-1)->order('id desc')->paginate(15);
             $play = Db::name('play_cates')->field('id,title')->order('id desc')->select();
             $user = Db::name('users')->field('id,name')->select();
             $play = array_column($play,'title','id');
@@ -109,6 +109,18 @@ class Order extends Base
         }
 
         return false;
+    }
+
+    //一键清除
+    public function del_all(){
+
+        $ret = Db::name('order')->where('status','-1')->delete();
+        if($ret){
+            return json(['code'=>200,'msg'=>'清除成功']);
+        }else{
+            return json(['code'=>200,'msg'=>'清除失败']);
+        }
+
     }
     
     public function check_zhuan(){

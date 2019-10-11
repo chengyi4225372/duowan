@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:109:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/index\view\login\login.html";i:1570602847;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:109:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/index\view\login\login.html";i:1570758694;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,6 +71,12 @@
                            parent.location.reload();
                        })
                }
+
+             if(ret.code == 400){
+                 layer.msg(ret.msg,function(){
+                     parent.location.reload();
+                 })
+             }
 
          },'json')
     })

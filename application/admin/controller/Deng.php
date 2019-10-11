@@ -14,6 +14,8 @@ class Deng extends Base
     protected $login = 'login_img';
 
     protected $type  = 'type_img';
+
+    protected $shi  ='shi_img';
     //登录页
     public function index(){
       if($this->request->isGet()){
@@ -60,6 +62,35 @@ class Deng extends Base
 
             if(isset($id)){
                 $res = Db::name($this->type)->where('id',$id)->update(['imgs'=>$images]);
+            }
+
+            if($res !== false){
+                return json(['code'=>200,'msg'=>'操作成功']);
+            }else{
+                return json(['code'=>400,'msg'=>'操作失败']);
+            }
+        }
+    }
+
+
+    //实例图片
+    public function shi(){
+        if($this->request->isGet()){
+            $info = Db::name($this->shi)->find();
+            $this->assign('info',$info);
+            return $this->fetch();
+        }
+
+        if($this->request->isPost()){
+            $id     = input('post.mid','','int');
+            $images = input('post.images','','trim');
+
+            if(empty($id) || $id <= 0){
+                $res = Db::name($this->shi)->insertGetId(['imgs'=>$images]);
+            }
+
+            if(isset($id)){
+                $res = Db::name($this->shi)->where('id',$id)->update(['imgs'=>$images]);
             }
 
             if($res !== false){

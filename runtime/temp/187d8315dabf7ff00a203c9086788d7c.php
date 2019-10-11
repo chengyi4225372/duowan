@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:109:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/index\view\index\zhuan.html";i:1570610914;s:99:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\index\view\public\menu.html";i:1570600453;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:109:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/index\view\index\zhuan.html";i:1570756096;s:99:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\index\view\public\menu.html";i:1570600453;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,7 +78,7 @@
 
         </div>
         <h5 class="text-center" style="margin-top: 20px; color: #FFF;">如不懂如何充值可留意下圖示例</h5>
-        <img src="https://db-668.net/html/images/123.jpg" class="img-fluid rounded mx-auto d-block" style="margin-top: 20px;">
+        <img src="<?php echo (isset($shi_img['imgs']) && ($shi_img['imgs'] !== '')?$shi_img['imgs']:''); ?>" class="img-fluid rounded mx-auto d-block" style="margin-top: 20px;">
     </div>
     <script src="/static/index/js/jquery-3.3.1.min.js"></script>
     <script src="/static/index/js/bootstrap.min.js"></script>

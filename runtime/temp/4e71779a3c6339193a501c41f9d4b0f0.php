@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:107:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/admin\view\order\wei.html";i:1570700012;s:103:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\admin\view\template\layout.html";i:1569227915;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:107:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/admin\view\order\wei.html";i:1570755459;s:103:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\admin\view\template\layout.html";i:1569227915;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -178,7 +178,7 @@
                         <td><?php echo date('Y-m-d h:i',$vo['create_time']); ?></td>
 
                         <td class="td-do">
-                            <a data-href="<?php echo url('order/edit',array('id'=>$vo['id'])); ?>"
+                            <a data-href="<?php echo url('order/edit',array('id'=>$vo['id'],'pid'=>$vo['pid'])); ?>"
                                class="btn btn-primary btn-xs edit" title="修改">
                                 <i class="fa fa-pencil"></i>
                             </a>
@@ -217,7 +217,7 @@
                 layer.open({
                     type: 2,
                     title: '添加',
-                    area: ['50%', '60%'],
+                    area: ['40%', '60%'],
                     anim: 2,
                     content: url, //iframe的url，no代表不显示滚动条
                 })

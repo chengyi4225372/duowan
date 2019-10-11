@@ -1,13 +1,14 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:108:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/admin\view\order\edit.html";i:1570755536;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:109:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/admin\view\order\zhuan.html";i:1570755289;}*/ ?>
 
 <link rel="stylesheet" href="/static/admin/css/app.min.css">
 <script src="/static/admin/js/app.min.js"></script>
 <script src="/static/admin/plugins/layer/layer.js"></script>
 
+
+
 <div class="row">
     <div class="col-md-12">
         <div class="box box-primary">
-
 
             <form id="dataForm" class="form-horizontal dataForm" action="" method="post" enctype="multipart/form-data">
                 <div class="box-body">
@@ -17,28 +18,17 @@
                         <input id="pid"  value="<?php echo $info['pid']; ?>" hidden placeholder="请勿修改">
                         <?php endif; ?>
 
+
                         <div class="form-group">
-                            <label for="name" class="col-sm-2 control-label">支付凭证图</label>
+                            <label for="name" class="col-sm-2 control-label">支付寶帳號/收據號碼</label>
                             <div class="col-sm-10 col-md-4">
                                 <div class="input-group">
-                                    <a href="<?php echo (isset($info['imgs']) && ($info['imgs'] !== '')?$info['imgs']:''); ?>">
-                                        <img src="<?php echo (isset($info['imgs']) && ($info['imgs'] !== '')?$info['imgs']:'/static/index/images/images.png'); ?>" alt="" style="max-width: 200px;max-height: 200px">
-                                    </a>
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input  id="name" name="name" value="<?php echo (isset($info['alipay']) && ($info['alipay'] !== '')?$info['alipay']:''); ?>"
+                                            class="form-control" placeholder="支付寶帳號/收據號碼">
                                 </div>
                             </div>
                         </div>
-
-                        <div class="form-group">
-                                        <label for="name" class="col-sm-2 control-label">支付寶帳號</label>
-                                        <div class="col-sm-10 col-md-4">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                                <input  id="name" name="name" value="<?php echo (isset($info['names']) && ($info['names'] !== '')?$info['names']:''); ?>"
-                                                        class="form-control" placeholder="支付寶帳號">
-                                            </div>
-                                        </div>
-                         </div>
-
 
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label">订单状态</label>
@@ -49,18 +39,16 @@
                             </select>
                         </div>
 
-
                     </div>
                 </div>
 
-                <?php if($info['status'] == -1): else: ?>
+               <?php if($info['status'] == -1): else: ?>
                 <div class="box-footer">
                     <div class="col-sm-2">
                     </div>
                     <div class="col-sm-10 col-md-4">
                         <div class="btn-group">
                             <button type="button" class="btn flat btn-info dataform-submit zhuan">
-
                                 保存
                             </button>
                         </div>
@@ -73,15 +61,14 @@
 
                     </div>
                 </div>
-               <?php endif; ?>
 
+              <?php endif; ?>
             </form>
         </div>
     </div>
 </div>
 
 <script>
-
     $('.zhuan').click(function(){
         var url = "<?php echo url('order/check_zhuan'); ?>";
 
@@ -94,22 +81,19 @@
         }
 
         $.post(url,{'pid':pid,'mid':mid,'status':status},function(ret){
-            if(ret.code==200){
+                  if(ret.code==200){
+                      layer.msg(ret.msg,function(){
+                          parent.location.href="<?php echo url('order/wei'); ?>";
+                      })
+                  }
+
+            if(ret.code==400){
                 layer.msg(ret.msg,function(){
                     parent.location.href="<?php echo url('order/wei'); ?>";
                 })
             }
-
-            if(ret.code==400){
-                layer.msg(ret.msg,function(){
-                    parent.location.href="<?php echo url('order/wei'); ?>"
-                }
-            }
-
         },'json')
 
-    });
 
-
+    })
 </script>
-

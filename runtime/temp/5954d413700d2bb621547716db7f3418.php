@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:111:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/index\view\index\history.html";i:1570613002;s:99:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\index\view\public\menu.html";i:1570600453;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:111:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/index\view\index\history.html";i:1570756914;s:99:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\index\view\public\menu.html";i:1570600453;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,6 +78,7 @@
     </tbody>
 </table>
 
+<!--
 <nav aria-label="Page navigation">
 
 
@@ -92,20 +93,14 @@
     </ul>
 
 </nav>
-
+-->
 <script src="/static/index/js/jquery-3.3.1.min.js"></script>
 <script src="/static/index/js/bootstrap.min.js"></script>
 <script src="/static/index/js/less.min.js"></script>
 <script src="/static/admin/plugins/layer/layer.js"></script>
 
 <script>
-function show_url(id){
-    var url = "<?php echo url('index/check_order'); ?>";
 
-    $.get(url,{'id':id},function(ret){
-
-    },'json')
-}
 
 
 </script>

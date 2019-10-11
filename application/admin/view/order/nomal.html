@@ -1,5 +1,13 @@
 <div class="row">
 
+    <div class="box-header">
+        <div>
+
+            <a class="btn btn-success btn-sm del-all " data-url="{:url('order/del_all')}">一键清除</a>
+
+        </div>
+    </div>
+
 </div>
 
 <div class="row">
@@ -87,7 +95,7 @@
                 layer.open({
                     type: 2,
                     title: '添加',
-                    area: ['50%', '60%'],
+                    area: ['40%', '60%'],
                     anim: 2,
                     content: url, //iframe的url，no代表不显示滚动条
                 })
@@ -118,6 +126,34 @@
                     layer.close();
                 });
 
+            })
+
+            $('.del-all').click(function(){
+
+                var url = $(this).attr('data-url');
+
+                layer.confirm('您确定要清除这些数据吗？', {
+                    btn: ['确定','点错了'] //按钮
+                }, function(){
+                    $.get(url,function(ret){
+                        layer.load(0, {shade: false});
+
+                        if(ret.code == 200){
+                            layer.msg(ret.msg,function(){
+                                parent.location.reload();
+                            })
+                        }
+
+                        if(ret.code == 400){
+                            layer.msg(ret.msg,function(){
+                                parent.location.reload();
+                            })
+                        }
+
+                    },'json')
+                }, function(){
+                    layer.close();
+                });
             })
 
         </script>

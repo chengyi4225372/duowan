@@ -33,9 +33,15 @@ class Login  extends  Base {
                return json(['code'=>401,'msg'=>'該用戶已被凍結']);
            }
 
-           Db::name('users')->where('id',$res['id'])->update(['last_login_time'=>time()]);
-           Session::set('member',['id'=>$res['id'],'name'=>$res['name']]);
-           return json(['code'=>200,'msg'=>'登入成功']);
+           $arr = Db::name('users')->where('id',$res['id'])->update(['last_login_time'=>time()]);
+
+           if($arr){
+               Session::set('member',['id'=>$res['id'],'name'=>$res['name']]);
+               return json(['code'=>200,'msg'=>'登入成功']);
+           }else {
+               return json(['code'=>200,'msg'=>'登入失败']);
+           }
+
         }
 
     }

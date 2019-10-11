@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:108:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/admin\view\order\over.html";i:1570755459;s:103:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\admin\view\template\layout.html";i:1569227915;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:106:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/admin\view\deng\shi.html";i:1570755899;s:103:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\admin\view\template\layout.html";i:1569227915;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -129,129 +129,116 @@
         </section>
         <section class="content">
             <div class="row">
-
-</div>
-
-<div class="row">
     <div class="col-md-12">
         <div class="box">
 
-            <div class="box-body table-responsive">
-                <table class="table table-hover table-bordered datatable" width="100%">
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>订单号</th>
-                        <th>游戏类型</th>
-                        <th>用户</th>
-                        <th>充值类型</th>
-                        <th>订单状态</th>
-                        <th>创建时间</th>
-                        <th>操作</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-                    <tr>
-                        <td><?php echo $vo['id']; ?></td>
-                        <td><?php echo $vo['orderId']; ?></td>
-                        <td><?php echo $play[$vo['cid']]; ?></td>
-                        <td><?php echo $users[$vo['mid']]; ?></td>
-                        <td>
-                            <?php if($vo['pid'] == 1): ?>
-                            轉數塊
-                            <?php elseif($vo['pid'] == 2): ?>
-                            7-11充值
-                            <?php else: ?>
-                            好友轉賬
-                            <?php endif; ?>
-                        </td>
-                        <td>
-                            <?php if($vo['status'] == 0): ?>
-                            <a class="btn btn-block btn-social btn-github  btn-xs">未確認</a>
-                            <?php elseif($vo['status'] == 1): ?>
-                            <a class="btn btn-block btn-social btn-flickr btn-xs">已確認</a>
-                            <?php else: ?>
-                            <a class="btn btn-block btn-social btn-dropbox btn-xs">已取消</a>
-                            <?php endif; ?>
-                        </td>
-                        <td><?php echo date('Y-m-d h:i',$vo['create_time']); ?></td>
 
-                        <td class="td-do">
-                            <a data-href="<?php echo url('order/edit',array('id'=>$vo['id'],'pid'=>$vo['pid'])); ?>"
-                               class="btn btn-primary btn-xs edit" title="修改">
-                                <i class="fa fa-pencil"></i>
-                            </a>
-                            <a class="btn btn-danger btn-xs del"
-                               title="删除"  data-url="<?php echo url('order/del',array('id'=>$vo['id'])); ?>">
-                                <i class="fa fa-trash"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <?php endforeach; endif; else: echo "" ;endif; ?>
-
-
-                    </tbody>
-                </table>
+            <div class="box-header with-border">
+                <div class="btn-group">
+                    <a class="btn flat btn-sm btn-default form-history-back">
+                        <i class="fa fa-arrow-left"></i>返回</a>
+                </div>
             </div>
+
+
+
+            <div class="box-body">
+                <div class="fields-group">
+                    <div class="form-group">
+                        <label for="file" class="col-sm-2 control-label">上传图片</label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-file-archive-o"></i></span>
+                                <input  type="file" name="file" id="file" class="form-control" onchange="upload_file()" >
+                            </div>
+                            <div class="input-group file-caption-main">
+                                <img id="img" src="<?php echo (isset($info['imgs']) && ($info['imgs'] !== '')?$info['imgs']:'/static/index/images/images.png'); ?>" style="max-width: 200px;max-height: 200px">
+                                <input type="hidden" value="<?php echo $info['imgs']; ?>" id="images">
+                                <input type="hidden" value="<?php echo $info['id']; ?>" id="mid">
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+
 
             <div class="box-footer">
-                <?php echo $list->render(); ?>
-                <label class="control-label pull-right" style="margin-right: 10px; font-weight: 100;">
-                    <?php if(isset($total)): ?>
-                    <small>共<?php echo $total; ?> 条记录</small>
-                    &nbsp;
-                    <?php endif; ?>
-                    <small>每页显示10条</small>
-                </label>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-10 col-md-4">
+                    <div class="btn-group">
+                        <button type="button" class="btn flat btn-info dataform-submit">保存</button>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="reset" class="btn flat btn-default dataform-reset">重置</button>
+                    </div>
+
+                </div>
             </div>
+
 
 
         </div>
+    </div>
+</div>
+<script>
+    function upload_file() {
+        var formData =new FormData();
+        formData.append("file",$("#file")[0].files[0]);
+        $.ajax({
+            url: "<?php echo url('deng/UploadImg'); ?>",
+            type: "post",
+            data: formData,
+            async:false,
+            dataType: 'json',
+            cache: false,
+            processData : false,
+            contentType : false,
+            success: function (ret) {
+                if (ret.code == 200) {
+                    $("#img").attr('src', ret.path);
+                    $("#images").val(ret.path);
+                } else {
+                    layer.msg(ret.msg);
+                }
+            },
 
-        <script>
+        });
+        return false;
+    }
 
-            $('.edit').click(function(){
-                var url = $(this).attr('data-href');
+    $('.dataform-submit').click(function(){
+        var data = {};
 
-                layer.open({
-                    type: 2,
-                    title: '添加',
-                    area: ['40%', '60%'],
-                    anim: 2,
-                    content: url, //iframe的url，no代表不显示滚动条
+        data.images =$('#images').val();
+        data.mid    =$('#mid').val();
+        if(data.images =='' || data.images ==undefined){
+            layer.msg('请上传图片');
+            return ;
+        }
+
+        var url = "<?php echo url('deng/shi'); ?>";
+
+        $.post(url,data,function(ret){
+            if(ret.code == 200){
+                layer.msg(ret.msg,function(){
+                    parent.location.reload();
                 })
-            })
+            }
 
+            if(ret.code == 400){
+                layer.msg(ret.msg,function(){
+                    parent.location.reload();
+                })
+            }
+        },'json')
+    })
 
-            $('.del').click(function(){
-
-                var url = $(this).attr('data-url');
-
-                layer.confirm('您是确定要删除？', {
-                    btn: ['确定','点错了'] //按钮
-                }, function(){
-                    $.get(url,function(ret){
-                        if(ret.code == 200){
-                            layer.msg(ret.msg,function(){
-                                parent.location.reload();
-                            })
-                        }
-
-                        if(ret.code == 400){
-                            layer.msg(ret.msg,function(){
-                                parent.location.reload();
-                            })
-                        }
-                    },'json')
-                }, function(){
-                    layer.close();
-                });
-
-            })
-
-        </script>
-
+</script>
         </section>
     </div>
 

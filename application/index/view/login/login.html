@@ -71,6 +71,12 @@
                        })
                }
 
+             if(ret.code == 400){
+                 layer.msg(ret.msg,function(){
+                     parent.location.reload();
+                 })
+             }
+
          },'json')
     })
 

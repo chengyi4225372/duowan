@@ -149,15 +149,19 @@ class Index  extends  Base {
     }
 
 
-    //账单记录 todo
+    //账单记录
     public function history(){
         $mid  = Session::get('member.id');
-        $list = Db::name($this->order)->where(['mid'=>$mid])->order('id desc')->paginate(5);
+        $list = Db::name($this->order)
+            ->where(['mid'=>$mid,'status'=>'!= -1'])
+            ->order('create_time desc ,id desc')
+            ->limit(0,20)
+            ->select();
         $this->assign('list',$list);
         return $this->fetch();
     }
 
-    //todo 待完成
+    //todo 无用
     public function check_order(){
 
     }
