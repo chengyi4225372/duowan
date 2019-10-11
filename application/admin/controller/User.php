@@ -19,7 +19,7 @@ class User extends Base
         $pageParam = ['query' => []];
         if (isset($this->param['keywords']) && !empty($this->param['keywords'])) {
             $pageParam['query']['keywords'] = $this->param['keywords'];
-            $model->whereLike('name|nickname|email|mobile', "%" . $this->param['keywords'] . "%");
+            $model->whereLike('name', "%" . $this->param['keywords'] . "%");
             $this->assign('keywords', $this->param['keywords']);
         }
 

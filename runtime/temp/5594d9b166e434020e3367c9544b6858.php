@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:109:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/index\view\index\types.html";i:1570603333;s:99:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\index\view\public\menu.html";i:1570600453;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:109:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/index\view\index\types.html";i:1570774198;s:99:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\index\view\public\menu.html";i:1570600453;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,7 +57,7 @@
     <div class="input-group" style="margin-top: 20px;">
         <select class="form-control" id="pid">
             <option value="">請選擇充值類型</option>
-            <option value="1">轉數塊</option>
+            <option value="1">轉數快</option>
             <option value="2">7-11充值</option>
             <option value="3">好友轉賬</option>
         </select>

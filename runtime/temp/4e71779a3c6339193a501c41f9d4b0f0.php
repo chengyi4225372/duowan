@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:107:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/admin\view\order\wei.html";i:1570776297;s:103:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\admin\view\template\layout.html";i:1570774066;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:107:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/admin\view\order\wei.html";i:1570781607;s:103:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\admin\view\template\layout.html";i:1570774066;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -172,7 +172,7 @@
                             <?php elseif($vo['status'] == 1): ?>
                             <a class="btn btn-block btn-social btn-flickr btn-xs">已確認</a>
                             <?php else: ?>
-                            <a class="btn btn-block btn-social btn-dropbox btn-xs">已取消</a>
+                            <a class="btn btn-block btn-social btn-dropbox btn-xs">已上分</a>
                             <?php endif; ?>
                         </td>
                         <td><?php echo date('Y-m-d h:i',$vo['create_time']); ?></td>

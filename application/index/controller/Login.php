@@ -23,7 +23,7 @@ class Login  extends  Base {
         if($this->request->isPost()){
            $name =  input('post.name','','trim');
 
-           $res  = Db::name('users')->where('name',$name)->find();
+           $res  = Db::name('users')->where(['name'=>$name,'delete_time'=>Null])->find();
 
            if(empty($res)){
                return json(['code'=>403,'msg'=>'該用戶不存在']);
