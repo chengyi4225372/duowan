@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:109:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/admin\view\order\chong.html";i:1570755381;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:109:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/admin\view\order\chong.html";i:1570776115;}*/ ?>
 
 <link rel="stylesheet" href="/static/admin/css/app.min.css">
 <script src="/static/admin/js/app.min.js"></script>
@@ -92,6 +92,7 @@
                     parent.location.href="<?php echo url('order/wei'); ?>";
                 })
             }
+
         },'json')
 
 

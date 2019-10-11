@@ -48,10 +48,17 @@
                         <td>{$vo.create_time|date='Y-m-d h:i',###}</td>
 
                         <td class="td-do">
+                            {notempty name='$vo.pid'}
                             <a data-href="{:url('order/edit',array('id'=>$vo.id,'pid'=>$vo.pid))}"
                                class="btn btn-primary btn-xs edit" title="修改">
                                 <i class="fa fa-pencil"></i>
                             </a>
+                            {else /}
+                            <a onclick="errors()" class="btn btn-primary btn-xs  btn-success" title="修改">
+                                <i class="fa fa-times"></i>
+                            </a>
+
+                            {/notempty}
                             <a class="btn btn-danger btn-xs del"
                                title="删除"  data-url="{:url('order/del',array('id'=>$vo.id))}">
                                 <i class="fa fa-trash"></i>
@@ -119,5 +126,9 @@
                 });
 
             })
+
+            function errors(){
+                layer.alert('该订单数据异常，建议删除！');
+            }
 
         </script>
