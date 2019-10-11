@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:108:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/admin\view\order\edit.html";i:1570755536;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:108:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/admin\view\order\edit.html";i:1570760720;}*/ ?>
 
 <link rel="stylesheet" href="/static/admin/css/app.min.css">
 <script src="/static/admin/js/app.min.js"></script>
@@ -102,8 +102,8 @@
 
             if(ret.code==400){
                 layer.msg(ret.msg,function(){
-                    parent.location.href="<?php echo url('order/wei'); ?>"
-                }
+                    parent.location.href="<?php echo url('order/wei'); ?>";
+                });
             }
 
         },'json')

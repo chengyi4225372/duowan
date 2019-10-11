@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:109:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/admin\view\index\index.html";i:1569568070;s:103:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\admin\view\template\layout.html";i:1569227915;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:109:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/admin\view\index\index.html";i:1570760513;s:103:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\admin\view\template\layout.html";i:1569227915;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -142,9 +142,9 @@
         <!-- small box -->
         <div class="small-box bg-aqua">
             <div class="inner">
-                <h3>150</h3>
+                <h3><?php echo $order; ?></h3>
 
-                <p>新订单</p>
+                <p>今日订单总数</p>
             </div>
             <div class="icon">
                 <i class="ion ion-bag"></i>
@@ -157,9 +157,9 @@
         <!-- small box -->
         <div class="small-box bg-green">
             <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                <h3><?php echo $member; ?></h3>
 
-                <p>跳出率</p>
+                <p>用户人数</p>
             </div>
             <div class="icon">
                 <i class="ion ion-stats-bars"></i>
@@ -172,9 +172,9 @@
         <!-- small box -->
         <div class="small-box bg-yellow">
             <div class="inner">
-                <h3>44</h3>
+                <h3><?php echo $over; ?></h3>
 
-                <p>User Registrations</p>
+                <p>当日已確認订单</p>
             </div>
             <div class="icon">
                 <i class="ion ion-person-add"></i>
@@ -187,9 +187,9 @@
         <!-- small box -->
         <div class="small-box bg-red">
             <div class="inner">
-                <h3>65</h3>
+                <h3><?php echo $nomal; ?></h3>
 
-                <p>访客</p>
+                <p>当日已取消订单</p>
             </div>
             <div class="icon">
                 <i class="ion ion-pie-graph"></i>
