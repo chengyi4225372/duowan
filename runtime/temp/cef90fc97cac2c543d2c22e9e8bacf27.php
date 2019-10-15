@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:108:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/admin\view\order\edit.html";i:1570776115;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:108:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/admin\view\order\edit.html";i:1570781575;}*/ ?>
 
 <link rel="stylesheet" href="/static/admin/css/app.min.css">
 <script src="/static/admin/js/app.min.js"></script>
@@ -45,7 +45,7 @@
                             <select class="form-control" id="status">
                                 <option value="0" <?php if($info['status'] == '0'): ?> selected=""<?php endif; ?>>未確認</option>
                                 <option value="1" <?php if($info['status'] == '1'): ?> selected=""<?php endif; ?>>已確認 </option>
-                                <option value="-1" <?php if($info['status'] == '-1'): ?> selected=""<?php endif; ?>>已取消</option>
+                                <option value="-1" <?php if($info['status'] == '-1'): ?> selected=""<?php endif; ?>>已上分</option>
                             </select>
                         </div>
 

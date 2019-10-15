@@ -6,14 +6,36 @@ use tools\Sysinfo;
 use think\Db;
 class Order extends Base
 {
-    protected $dataform ='order';
+    protected  $dataform ='order';
 
+
+    protected function get_user_id($name){
+        $id = Db::name('users')->where(['name'=>$name])->value('id');
+        return $id;
+    }
 
     //未完成
     public function wei(){
 
         if($this->request->isGet()){
-          $list = Db::name($this->dataform)->where('status',0)->order('id desc')->paginate(15);
+          $mid = input('get.keywords','','trim');
+          $pid = input('get.pid','','int');
+
+
+          if(empty($mid) && empty($pid)){
+              $list = Db::name($this->dataform)->where('status',0)->order('id desc')->paginate(15);
+          }
+
+          if(!empty($mid)){
+              $mid = $this->get_user_id($mid);
+
+              $w = ['status'=>0,'mid'=>$mid,'pid'=>$pid?$pid:['in','1,2,3']];
+              $list = Db::name($this->dataform)
+                  ->where($w)
+                  ->order('id desc')
+                  ->paginate(15);
+          }
+
           $play = Db::name('play_cates')->field('id,title')->order('id desc')->select();
           $user = Db::name('users')->field('id,name')->select();
           $play = array_column($play,'title','id');
@@ -21,9 +43,10 @@ class Order extends Base
           $this->assign('list',$list);
           $this->assign('play',$play);
           $this->assign('users',$users);
+
           return $this->fetch();
         }
-
+       return false;
     }
 
     public function edit()
@@ -64,7 +87,23 @@ class Order extends Base
     //已完成
     public function over(){
         if($this->request->isGet()){
-            $list = Db::name($this->dataform)->where('status',1)->order('id desc')->paginate(15);
+            $mid = input('get.keywords','','trim');
+            $pid = input('get.pid','','int');
+
+
+            if(empty($mid) && empty($pid)){
+                $list = Db::name($this->dataform)->where('status',1)->order('id desc')->paginate(15);
+            }
+
+            if(!empty($mid)){
+                $mid = $this->get_user_id($mid);
+
+                $w = ['status'=>1,'mid'=>$mid,'pid'=>$pid?$pid:['in','1,2,3']];
+                $list = Db::name($this->dataform)
+                    ->where($w)
+                    ->order('id desc')
+                    ->paginate(15);
+            }
             $play = Db::name('play_cates')->field('id,title')->order('id desc')->select();
             $user = Db::name('users')->field('id,name')->select();
             $play = array_column($play,'title','id');
@@ -79,7 +118,25 @@ class Order extends Base
     //已取消
     public function nomal(){
         if($this->request->isGet()){
-            $list = Db::name($this->dataform)->where('status',-1)->order('id desc')->paginate(15);
+
+            $mid = input('get.keywords','','trim');
+            $pid = input('get.pid','','int');
+
+
+            if(empty($mid) && empty($pid)){
+                $list = Db::name($this->dataform)->where('status',-1)->order('id desc')->paginate(15);
+            }
+
+            if(!empty($mid)){
+                $mid = $this->get_user_id($mid);
+
+                $w = ['status'=>-1,'mid'=>$mid,'pid'=>$pid?$pid:['in','1,2,3']];
+                $list = Db::name($this->dataform)
+                    ->where($w)
+                    ->order('id desc')
+                    ->paginate(15);
+            }
+
             $play = Db::name('play_cates')->field('id,title')->order('id desc')->select();
             $user = Db::name('users')->field('id,name')->select();
             $play = array_column($play,'title','id');

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:109:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/admin\view\order\nomal.html";i:1570781583;s:103:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\admin\view\template\layout.html";i:1570774066;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:109:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/admin\view\order\nomal.html";i:1571108155;s:103:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\admin\view\template\layout.html";i:1570774066;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -130,11 +130,38 @@
         <section class="content">
             <div class="row">
 
-    <div class="box-header">
-        <div>
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-body">
+                <form class="form-inline" id="searchForm">
+                    <div class="form-group">
+                        <input value="<?php echo \think\Request::instance()->get('keywords')?\think\Request::instance()->get('keywords') : '' ;; ?>"
+                               name="keywords" id="keywords" class="form-control input-sm" placeholder="请搜索用户名称查询">
+                    </div>
 
-            <a class="btn btn-success btn-sm del-all " data-url="<?php echo url('order/del_all'); ?>">一键清除</a>
+                    <div class="form-group">
+                        <select class="form-control input-sm" id="pid">
+                            <option value="0" <?php if(\think\Request::instance()->get('pid') == '0'): ?> selected=""<?php endif; ?>>全部类型</option>
+                            <option value="1" <?php if(\think\Request::instance()->get('pid') == '1'): ?> selected=""<?php endif; ?>>轉數快</option>
+                            <option value="2" <?php if(\think\Request::instance()->get('pid') == '2'): ?> selected=""<?php endif; ?>>7-11充值</option>
+                            <option value="3" <?php if(\think\Request::instance()->get('pid') == '3'): ?> selected=""<?php endif; ?>>好友轉賬</option>
+                        </select>
+                    </div>
 
+                    <div class="form-group">
+                        <button class="btn btn-sm btn-primary search" type="button">
+                            <i class="fa fa-search"></i> 查询
+                        </button>
+                    </div>
+
+                    <div class="form-group">
+                        <button onclick="clear_form()" class="btn btn-sm btn-" type="button"><i
+                                class="fa  fa-eraser"></i> 清空查询
+                        </button>
+                    </div>
+
+                </form>
+            </div>
         </div>
     </div>
 
@@ -286,6 +313,18 @@
                 });
             })
 
+            $('.search').click(function(){
+                var key = $.trim($('#keywords').val());
+
+                var pid = $("#pid option:selected").val();
+
+                if(key == '' || key ==undefined){
+                    layer.msg('请输入用户进行搜索');
+                    return false;
+                }
+
+                window.location.href="<?php echo url('order/nomal'); ?>?keywords="+key+"&pid="+pid;
+            })
         </script>
 
         </section>

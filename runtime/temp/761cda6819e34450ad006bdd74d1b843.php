@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:109:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/admin\view\index\index.html";i:1570760513;s:103:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\admin\view\template\layout.html";i:1570774066;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:109:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/admin\view\index\index.html";i:1571102469;s:103:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\admin\view\template\layout.html";i:1570774066;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -149,7 +149,7 @@
             <div class="icon">
                 <i class="ion ion-bag"></i>
             </div>
-            <a href="#" class="small-box-footer">更多 <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo url('order/wei'); ?>" class="small-box-footer">更多 <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <!-- ./col -->
@@ -164,7 +164,7 @@
             <div class="icon">
                 <i class="ion ion-stats-bars"></i>
             </div>
-            <a href="#" class="small-box-footer">更多 <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo url('user/index'); ?>" class="small-box-footer">更多 <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <!-- ./col -->
@@ -179,7 +179,7 @@
             <div class="icon">
                 <i class="ion ion-person-add"></i>
             </div>
-            <a href="#" class="small-box-footer">更多 <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo url('order/over'); ?>" class="small-box-footer">更多 <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <!-- ./col -->
@@ -194,7 +194,7 @@
             <div class="icon">
                 <i class="ion ion-pie-graph"></i>
             </div>
-            <a href="#" class="small-box-footer">更多 <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo url('order/nomal'); ?>" class="small-box-footer">更多 <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <!-- ./col -->
