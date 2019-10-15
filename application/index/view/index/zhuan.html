@@ -19,7 +19,7 @@
     <h2 class="text-center" style="margin-top: 20px; color: #FFF;">
 
         <div class="input-group" style="margin-top: 0px;">
-                <input type="file" accept="image/*" onchange="UploadsImgs()" id="Capture" capture="camera" accept=".jpg" style="display: none;">
+                <input type="file" accept="image/*" onchange="UploadsImgs()" id="Capture"  style="display: none;">
                 <input type="hidden" id="imgs" value="">
                 <input type="hidden" id="order" value="{$Think.get.order}">
         </div>
@@ -64,6 +64,7 @@
                  if (ret.code == 200) {
                      $("#images").attr('src', ret.path);
                      $("#imgs").val(ret.path);
+                     layer.msg(ret.msg,{icon:6,time:3500});
                  } else {
                      layer.msg(ret.msg);
                  }

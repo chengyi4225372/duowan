@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:109:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/index\view\index\zhuan.html";i:1570756096;s:99:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\index\view\public\menu.html";i:1570600453;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:109:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\public/../application/index\view\index\zhuan.html";i:1571111242;s:99:"C:\Users\Administrator\Desktop\phpEnv5.6.0-Green\www\duowan\application\index\view\public\menu.html";i:1570600453;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,7 +57,7 @@
     <h2 class="text-center" style="margin-top: 20px; color: #FFF;">
 
         <div class="input-group" style="margin-top: 0px;">
-                <input type="file" accept="image/*" onchange="UploadsImgs()" id="Capture" capture="camera" accept=".jpg" style="display: none;">
+                <input type="file" accept="image/*" onchange="UploadsImgs()" id="Capture"  style="display: none;">
                 <input type="hidden" id="imgs" value="">
                 <input type="hidden" id="order" value="<?php echo \think\Request::instance()->get('order'); ?>">
         </div>
@@ -87,6 +87,7 @@
     <script>
 
      function UploadsImgs(){
+         layer.load();
          var formData =new FormData();
          formData.append("file",$("#Capture")[0].files[0]);
          $.ajax({
@@ -102,6 +103,7 @@
                  if (ret.code == 200) {
                      $("#images").attr('src', ret.path);
                      $("#imgs").val(ret.path);
+                     layer.msg(ret.msg,{icon:6,time:3500});
                  } else {
                      layer.msg(ret.msg);
                  }
