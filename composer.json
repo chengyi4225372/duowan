@@ -17,7 +17,7 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "topthink/framework": "5.0.*",
+        "topthink/framework": "5.1.*",
         //"phpoffice/phpexcel": "1.8.*",
         "monolog/monolog": "^1.22",
         //"endroid/qrcode": "2.2.*",
